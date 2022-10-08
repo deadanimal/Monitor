@@ -8,79 +8,13 @@ use App\Models\Organisasi;
 
 class OrganisasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    public function senarai() {}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function satu() {}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreOrganisasiRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreOrganisasiRequest $request)
-    {
-        //
-    }
+    public function cipta() {}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Organisasi  $organisasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Organisasi $organisasi)
-    {
-        //
-    }
+    public function ubah() {}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Organisasi  $organisasi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Organisasi $organisasi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateOrganisasiRequest  $request
-     * @param  \App\Models\Organisasi  $organisasi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateOrganisasiRequest $request, Organisasi $organisasi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Organisasi  $organisasi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Organisasi $organisasi)
-    {
-        //
-    }
+    public function gugur() {}
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Activity;
+use App\Http\Requests\StoreTicketRequest;
+use App\Http\Requests\UpdateTicketRequest;
+use App\Models\Ticket;
 
-class ActivityController extends Controller
+class TicketController extends Controller
 {
     public function senarai() {}
 
@@ -16,4 +17,4 @@ class ActivityController extends Controller
     public function ubah() {}
 
     public function gugur() {}
-} 
+}

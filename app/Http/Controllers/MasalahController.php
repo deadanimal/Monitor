@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Activity;
+use App\Http\Requests\StoreMasalahRequest;
+use App\Http\Requests\UpdateMasalahRequest;
+use App\Models\Masalah;
 
-class ActivityController extends Controller
+class MasalahController extends Controller
 {
     public function senarai() {}
 
@@ -16,4 +17,4 @@ class ActivityController extends Controller
     public function ubah() {}
 
     public function gugur() {}
-} 
+}

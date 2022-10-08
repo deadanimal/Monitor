@@ -8,79 +8,13 @@ use App\Models\Ralat;
 
 class RalatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    public function senarai() {}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function satu() {}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreRalatRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRalatRequest $request)
-    {
-        //
-    }
+    public function cipta() {}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ralat  $ralat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ralat $ralat)
-    {
-        //
-    }
+    public function ubah() {}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ralat  $ralat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ralat $ralat)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateRalatRequest  $request
-     * @param  \App\Models\Ralat  $ralat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateRalatRequest $request, Ralat $ralat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ralat  $ralat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ralat $ralat)
-    {
-        //
-    }
+    public function gugur() {}
 }
