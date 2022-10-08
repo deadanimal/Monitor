@@ -38,12 +38,6 @@
 						<a class="sidebar-link" href="/">
 							<span class="align-middle">Dashboard</span>
 						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/project">
-							<span class="align-middle">Project</span>
-						</a>
 					</li>	
 					
 					<li class="sidebar-item">
@@ -51,40 +45,40 @@
 							<span class="align-middle">Activity</span>
 						</a>
 					</li>	
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/deliverable">
-							<span class="align-middle">Trade</span>
-						</a>
-					</li>	
+						
 
-                    @role('admin|manager')
+                    @role('admin')
 
                         <li class="sidebar-header">
-                            Admin
+                            Administrative
                         </li>	    
                         
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/app/database">
-                                <span class="align-middle">Database</span>
+                            <a class="sidebar-link" href="/pengguna">
+                                <span class="align-middle">Pengguna</span>
                             </a>
-                        </li>                        
+                        </li>  
+						
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/organisasi">
+                                <span class="align-middle">Organisasi</span>
+                            </a>
+                        </li> 	
+						
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="/projek">
+								<span class="align-middle">Projek</span>
+							</a>
+						</li>	
+						
+						<li class="sidebar-item">
+							<a class="sidebar-link" href="/kategori">
+								<span class="align-middle">Kategori</span>
+							</a>
+						</li>								
  
                     @endrole   
-                    
-                    @role('admin|manager|news-editor')
-
-                        <li class="sidebar-header">
-                            News
-                        </li>	    
-                        
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/app/post">
-                                <span class="align-middle">Post</span>
-                            </a>
-                        </li>                        
- 
-                    @endrole                     
+                                     
 
 
 				</ul>
@@ -174,29 +168,17 @@
 						<div class="col-8 text-start">
 							<ul class="list-inline">
 
-                                @role('super-admin')  
+                                <!-- @role('admin')  
                                     <li class="list-inline-item">
-                                        <a class="text-muted" href="/admin">Access Admin Site</a>
+                                        <a class="text-muted" href="/admin"></a>
                                     </li>
-                                @endrole  
-
-								<li class="list-inline-item">
-									<a class="text-muted" href="/app/support">Support</a>
-								</li>
-
-								<li class="list-inline-item">
-									<a class="text-muted" href="/privacy">Privacy</a>
-								</li>
-
-								<li class="list-inline-item">
-									<a class="text-muted" href="/terms">Terms</a>
-								</li>    
+                                @endrole   -->
                                 
 							</ul>
 						</div>
 						<div class="col-4 text-end">
 							<p class="mb-0">
-								&copy; 2022 - <a href="/" class="text-muted">Fanatico</a>
+								&copy; 2022 - <a href="/" class="text-muted">Monitor</a>
 							</p>
 						</div>
 					</div>

@@ -14,8 +14,8 @@ Route::middleware(['auth'])->group(function () {
     // Admin Function
 
     Route::get('log', [PenggunaController::class, 'senarai_log']);
-    Route::get('user', [PenggunaController::class, 'senarai_user']);    
-    Route::post('user', [PenggunaController::class, 'cipta_user']);
+    Route::get('pengguna', [PenggunaController::class, 'senarai_pengguna']);    
+    Route::post('pengguna', [PenggunaController::class, 'cipta_pengguna']);
     Route::post('organisasi', [PenggunaController::class, 'cipta_organisasi']);
     Route::get('organisasi/{id}', [PenggunaController::class, 'satu_organisasi']);
     Route::put('organisasi/{id}', [PenggunaController::class, 'ubah_organisasi']);
