@@ -38,6 +38,7 @@ class OrganisasiController extends Controller
         $org->save();
 
         $url = '/organisasi';
+        toast('Organisasi dicipta!','success');
         return redirect($url);
     }
 

@@ -102,6 +102,7 @@ class PenggunaController extends Controller
 
         $role = Role::find($request->role_id);
         $user->attachRole($role);
+        toast('Pengguna dicipta!','success');
 
         return redirect('/pengguna');
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\OrganisasiController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\NotaController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ActivityController;
 
 Route::middleware(['auth'])->group(function () {
@@ -55,6 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('nota', [NotaController::class, 'cipta_nota']);
     Route::get('nota/{id}', [NotaController::class, 'satu_nota']);
     Route::put('nota/{id}', [NotaController::class, 'ubah_nota']);  
+
+    Route::get('notifikasi', [NotifikasiController::class, 'senarai_notifikasi'])->name('notifikasi.senarai');
+    Route::post('notifikasi', [NotifikasiController::class, 'cipta_notifikasi']);
+    Route::get('notifikasi/{id}', [NotifikasiController::class, 'satu_notifikasi']);
+    Route::put('notifikasi/{id}', [NotifikasiController::class, 'ubah_notifikasi']);      
     
     Route::get('projek/{projek_id}/nota', [NotaController::class, 'senarai_nota'])->name('projek.nota.senarai');
     Route::post('projek/{projek_id}/nota', [NotaController::class, 'cipta_nota']);

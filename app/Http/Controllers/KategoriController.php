@@ -36,7 +36,8 @@ class KategoriController extends Controller
         //$kategori->taggable_id = $request->taggable_id;
         //$kategori->taggable_type = $request->taggable_type;
         $kategori->save();
-        return back()->withSuccess('Nota dicipta');
+        toast('Kategori dicipta!','success');
+        return back();
     }
 
     public function ubah_kategori(Request $request) {

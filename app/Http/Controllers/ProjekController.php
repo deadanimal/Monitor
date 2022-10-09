@@ -65,6 +65,7 @@ class ProjekController extends Controller
         $projek->simbol = $request->simbol;
         $projek->organisasi_id = $request->organisasi_id;
         $projek->save();
+        toast('Projek dicipta!','success');
         return redirect('/projek');
     }
 
