@@ -68,7 +68,7 @@
     var table = $('.pengguna-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('pengguna.senarai') }}",
+        ajax: "/pengguna",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'name', name: 'nama'},

@@ -67,7 +67,7 @@
     var table = $('.organisasi-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('organisasi.senarai') }}",
+        ajax: "/organisasi",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'nama', name: 'nama'},
