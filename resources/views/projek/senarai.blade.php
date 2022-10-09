@@ -71,7 +71,7 @@
         processing: true,
         serverSide: true,
         responsive: true,
-        ajax: "{{ route('projek.senarai') }}",
+        ajax: "/projek",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
 			{data: 'organisasi', name: 'organisasi'},
