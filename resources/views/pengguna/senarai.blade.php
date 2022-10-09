@@ -26,7 +26,7 @@
 								</div>
 
 								<div class="card-body">
-									<table class="table table-bordered pengguna-datatable">
+									<table class="table table-striped table-sm pengguna-datatable">
 											<thead>
 												<tr>
 													<th>No</th>

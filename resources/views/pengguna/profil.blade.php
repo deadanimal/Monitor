@@ -17,7 +17,7 @@
 
 			<div class="row">
 
-				<div class="col-xl-5">
+				<div class="col-xl-4">
 					<div class="card flex-fill w-100">
 						<div class="card-header">
 							<div class="card-actions float-end">
@@ -27,9 +27,26 @@
 						</div>
 						<div class="card-body py-3">
 
-						{{$user->name}}
-						{{$user->email}}
-						{{$user->organisasi->nama}}
+						{{$user->name}} <br>
+						{{$user->email}} <br>
+						{{$user->organisasi->nama}} <br>
+
+         
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-4">
+					<div class="card flex-fill w-100">
+						<div class="card-header">
+							<div class="card-actions float-end">
+								
+							</div>
+							<h5 class="card-title mb-0">---</h5>
+						</div>
+						<div class="card-body py-3">
+
 
                             <form action="/change-password" method="POST">
                                 @csrf       
@@ -47,7 +64,7 @@
 
 						</div>
 					</div>
-				</div>
+				</div>				
 
             </div>
 

@@ -57,5 +57,15 @@ class User extends Authenticatable
     public function activity_supervisor()
     {
         return $this->hasMany(Activity::class, 'supervisor_id');
-    }        
+    }  
+    
+    public function deliverable_pekerja()
+    {
+        return $this->hasMany(Deliverable::class, 'pekerja_id');
+    }   
+    
+    public function deliverable_supervisor()
+    {
+        return $this->hasMany(Deliverable::class, 'supervisor_id');
+    }       
 }

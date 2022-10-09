@@ -26,7 +26,7 @@
 								</div>
 
 								<div class="card-body">
-									<table class="table table-bordered notifikasi-datatable">
+									<table class="table table-striped table-sm notifikasi-datatable">
 											<thead>
 												<tr>
 													<th>Tarikh</th>

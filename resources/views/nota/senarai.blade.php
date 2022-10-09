@@ -29,7 +29,7 @@
 
 								<div class="card-body py-3">
 
-									<table class="table table-bordered nota-datatable">
+									<table class="table table-striped table-sm nota-datatable">
 										<thead>
 											<tr>
 												<th>No</th>

@@ -28,7 +28,7 @@
 
 								<div class="card-body py-3">
 
-									<table class="table table-bordered kategori-datatable">
+									<table class="table table-striped table-sm kategori-datatable">
 										<thead>
 											<tr>
 												<th>No</th>

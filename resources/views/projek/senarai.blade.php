@@ -28,7 +28,7 @@
 
 
 								<div class="card-body">
-									<table class="table table-bordered projek-datatable">
+									<table class="table table-striped table-sm projek-datatable">
 											<thead>
 												<tr>
 													<th>No</th>
