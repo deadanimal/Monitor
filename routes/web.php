@@ -11,6 +11,7 @@ use App\Http\Controllers\NotaController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DeliverableController;
+use App\Http\Controllers\RujukanController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('log', [PenggunaController::class, 'senarai_log']);
         Route::get('borang-admin', [PenggunaController::class, 'senarai_borang_admin']);
         Route::get('pengguna', [PenggunaController::class, 'senarai_pengguna'])->name('pengguna.senarai');
+        Route::get('pengguna/{id}', [PenggunaController::class, 'satu_pengguna'])->name('pengguna.satu');
         Route::post('pengguna', [PenggunaController::class, 'cipta_pengguna']);
         Route::get('organisasi', [OrganisasiController::class, 'senarai_organisasi'])->name('organisasi.senarai');
         Route::post('organisasi', [OrganisasiController::class, 'cipta_organisasi']);
@@ -38,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
             
         Route::post('projek', [ProjekController::class, 'cipta_projek']);    
         Route::put('projek/{id}', [ProjekController::class, 'ubah_projek']);
+
+        Route::get('rujukan/cipta', [RujukanController::class, 'borang_rujukan']);
+        Route::post('rujukan', [RujukanController::class, 'cipta_rujukan']);
+        Route::put('rujukan/{id}', [RujukanController::class, 'ubah_rujukan']);        
         
         
     });     
@@ -47,6 +53,10 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('projek', [ProjekController::class, 'senarai_projek'])->name('projek.senarai');
     Route::get('projek/{id}', [ProjekController::class, 'satu_projek']);
+
+    Route::get('rujukan', [RujukanController::class, 'senarai_rujukan'])->name('rujukan.senarai');
+    Route::get('rujukan/{id}', [RujukanController::class, 'satu_rujukan']);
+        
     
     Route::get('lokasi', [LokasiController::class, 'senarai_lokasi'])->name('lokasi.senarai');
     Route::post('lokasi', [LokasiController::class, 'cipta_lokasi']);

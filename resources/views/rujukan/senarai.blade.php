@@ -10,9 +10,9 @@
 
 			<div class="header">
 				<h1 class="header-title">
-					Pengguna
+					Rujukan
 				</h1>
-				<p class="header-subtitle">- - -</p>
+				<p class="header-subtitle"></p>
 			</div>
 
             <div class="row">
@@ -21,20 +21,20 @@
 
                 <div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Senarai Pengguna</h5>
-									<h6 class="card-subtitle text-muted">- - -</h6>
+									<h5 class="card-title">Senarai Rujukan</h5>
+                                    @role('admin')
+									    <a href="/rujukan/cipta"><h6 class="card-subtitle text-muted">Cipta rujukan</h6></a>
+                                    @endrole
 								</div>
 
 								<div class="card-body">
-									<table class="table table-striped table-sm pengguna-datatable">
+									<table class="table table-striped table-sm rujukan-datatable">
 											<thead>
 												<tr>
 													<th>No</th>
+													<th>Kategori</th>
 													<th>Nama</th>
-													<th>Email</th>
-													<th>Organisasi</th>
-													<th>Peranan</th>
-													<th>-</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
@@ -66,16 +66,14 @@
 <script type="text/javascript">
   $(function () {
 
-    var table = $('.pengguna-datatable').DataTable({
+    var table = $('.rujukan-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "/pengguna",
+        ajax: "/rujukan",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
-            {data: 'name', name: 'nama'},
-            {data: 'email', name: 'email'},
-			{data: 'organisasi', name: 'organisasi'},
-			{data: 'role', name: 'role'},
+            {data: 'kategori', name: 'kategori'},
+			{data: 'nama', name: 'nama'},
 			{data: 'link', name: 'link'},
         ]
     });

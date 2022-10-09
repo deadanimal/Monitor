@@ -34,7 +34,8 @@ class ProjekController extends Controller
                 })   
                 ->addColumn('link', function (Projek $projek) {
                     $url = '/projek/'.$projek->id;
-                    return '<a href="'.$url.'">Lihat </a>';
+                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                    return $html_button;
                 })     
                 ->rawColumns(['link'])              
                 ->make(true);

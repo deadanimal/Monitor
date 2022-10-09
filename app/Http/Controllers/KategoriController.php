@@ -17,6 +17,12 @@ class KategoriController extends Controller
         if ($request->ajax()) {
             return Datatables::collection($kategoris)
                 ->addIndexColumn()    
+                ->addColumn('link', function (Kategori $kategori) {
+                    $url = '/kategori/'.$kategori->id;
+                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                    return $html_button;
+                })     
+                ->rawColumns(['link'])                  
                 ->make(true);
         }              
 

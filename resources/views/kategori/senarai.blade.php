@@ -33,6 +33,7 @@
 											<tr>
 												<th>No</th>
 												<th>Nama</th>
+                                                <th></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -72,6 +73,7 @@
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'nama', name: 'nama'},
+            {data: 'link', name: 'link'},
         ]
     });
 

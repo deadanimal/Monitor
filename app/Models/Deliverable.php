@@ -11,7 +11,7 @@ class Deliverable extends Model
 
     public function projek()
     {
-        return $this->belongsTo(Organisasi::class);
+        return $this->belongsTo(Projek::class);
     }        
 
     public function organisasi()

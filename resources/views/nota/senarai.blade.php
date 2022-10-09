@@ -8,13 +8,6 @@
 
 		<div class="container-fluid">
 
-			<div class="header">
-				<h1 class="header-title">
-					Nota
-				</h1>
-				<!-- <p class="header-subtitle">- - -</p> -->
-														
-			</div>
 
 			<div class="row">
 

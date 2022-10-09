@@ -36,6 +36,12 @@
 				<ul class="sidebar-nav">
 
 					<li class="sidebar-item">
+						<a class="sidebar-link" href="/">
+							<span class="align-middle">Dashboard</span>
+						</a>
+					</li>				
+
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="/projek">
 							<span class="align-middle">Projek</span>
 						</a>
@@ -46,7 +52,13 @@
 						<a class="sidebar-link" href="/nota">
 							<span class="align-middle">Nota</span>
 						</a>
-					</li>			
+					</li>	
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/rujukan">
+							<span class="align-middle">Rujukan</span>
+						</a>
+					</li>					
 						
 						
 

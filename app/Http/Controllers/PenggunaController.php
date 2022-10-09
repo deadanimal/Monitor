@@ -22,15 +22,16 @@ class PenggunaController extends Controller
         $user = $request->user();
         $user_id = $user->id;
 
-        $aktivitis = Activity::all();
-        $deliverables = Deliverable::all();
-        $notis = Notifikasi::all();
+
+        if ($user->hasRole(['analyst', 'developer', 'pmo', 'business', 'finance'])) {
+            return $this->show_staff_dashboard($user);
+        } else if ($user->hasRole(['client-finance', 'client-end-user', 'client-pmo'])) {
+            return $this->show_client_dashboard($user);
+        } else {
+            return $this->show_admin_dashboard($user);
+        }
 
 
-
-        return view('dashboard', compact([
-            'user', 'aktivitis', 'deliverables', 'notis'
-        ]));
     }
 
     public function profil(Request $request) {
@@ -79,7 +80,13 @@ class PenggunaController extends Controller
                         $statement .= $role->display_name.' ';
                     }
                     return $statement;
-                })                
+                })      
+                ->addColumn('link', function (User $user) {
+                    $url = '/pengguna/'.$user->id;
+                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                    return $html_button;
+                })     
+                ->rawColumns(['link'])                            
                 ->make(true);
         }        
 
@@ -116,6 +123,56 @@ class PenggunaController extends Controller
             'penggunas', 'roles', 'orgs'
         ]));
     }
+
+    public function satu_pengguna(Request $request) {
+
+        $id = $request->route('id');
+        $user = user::find($id);  
+  
+        return view('pengguna.satu', compact('user'));
+    }    
+
+    public function show_admin_dashboard($user) {
+        $acts = Activity::all();
+        $delis = Deliverable::all();
+        $notis = Notifikasi::all();
+
+        return view('dashboard.admin', compact([
+            'acts', 'delis', 'notis'
+        ]));
+    }
+
+    public function show_staff_dashboard($user) {
+
+        if ($user->hasRole(['pmo'])) {
+            $acts = Activity::where([
+                ['status','=', 'CIPTA']
+            ])->get();
+            $delis = Deliverable::where([
+                ['status','=', 'CIPTA']
+            ])->get();
+            $notis = Notifikasi::where([
+                ['user_id','=', $user->id]
+            ])->get();
+        } else {
+            $acts = Activity::where([
+                ['pekerja','=', $user->id],
+                ['status','=', 'CIPTA']
+            ])->get();
+            $delis = Deliverable::where([
+                ['pekerja','=', $user->id],
+                ['status','=', 'CIPTA']
+            ])->get();
+            $notis = Notifikasi::where([
+                ['user_id','=', $user->id]
+            ])->get();
+        }
+
+
+        return view('dashboard.staff', compact([
+            'acts', 'delis', 'notis'
+        ]));
+    }    
 
 
 }

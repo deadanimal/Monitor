@@ -15,6 +15,12 @@ class OrganisasiController extends Controller
         if ($request->ajax()) {
             return Datatables::collection($orgs)
                 ->addIndexColumn()
+                ->addColumn('link', function (Organisasi $organisasi) {
+                    $url = '/organisasi/'.$organisasi->id;
+                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                    return $html_button;
+                })     
+                ->rawColumns(['link'])                    
                 ->make(true);
         }
                         
