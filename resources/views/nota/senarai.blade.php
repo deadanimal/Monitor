@@ -10,45 +10,25 @@
 
 			<div class="header">
 				<h1 class="header-title">
-					nota
+					Nota
 				</h1>
-				<p class="header-subtitle">- - -</p>
+				<!-- <p class="header-subtitle">- - -</p> -->
+													<button type="button" class="btn mb-1 btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														Tindakan
+													</button>
+													<div class="dropdown-menu" style="">
+														<a class="dropdown-item" href="/nota/cipta">Cipta Nota</a>
+													</div>					
 			</div>
 
 			<div class="row">
 
-				<div class="col-xl-5">
-					<div class="card flex-fill w-100">
-						<div class="card-header">
-							<div class="card-actions float-end">
-								
-							</div>
-							<h5 class="card-title mb-0">---</h5>
-						</div>
-						<div class="card-body py-3">
-
-                            <form action="/nota" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label">Nama</label>
-                                    <input class="form-control" type="text" name="nama">
-                                </div>         
-                                <div class="mb-3">
-                                    <label class="form-label">Simbol</label>
-                                    <input class="form-control" type="text" name="simbol">
-                                </div>                                                      
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
-
-						</div>
-					</div>
-				</div>
 
                 <div class="col-xl-12">
 
                 <div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Senarai nota</h5>
+									<h5 class="card-title">Senarai Nota</h5>
 									<h6 class="card-subtitle text-muted">- - -</h6>
 								</div>
 

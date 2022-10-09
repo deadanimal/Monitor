@@ -61,22 +61,22 @@ Route::middleware(['auth'])->group(function () {
     Route::put('projek/{projek_id}/ticket/{id}', [TicketController::class, 'ubah_ticket']);
     Route::post('projek/{projek_id}/ticket/{id}/hantar', [TicketController::class, 'hantar_message']);  
 
-    Route::get('projek/{projek_id}/activity', [ActivityController::class, 'senarai_activity']);
+    Route::get('projek/{projek_id}/activity/cipta', [ActivityController::class, 'borang_activity']);
     Route::post('projek/{projek_id}/activity', [ActivityController::class, 'cipta_activity']);
     Route::get('projek/{projek_id}/activity/{id}', [ActivityController::class, 'satu_activity']);
     Route::put('projek/{projek_id}/activity/{id}', [ActivityController::class, 'ubah_activity']);
 
-    Route::get('projek/{projek_id}/deliverable', [DeliverableController::class, 'senarai_deliverable']);
+    Route::get('projek/{projek_id}/deliverable/cipta', [DeliverableController::class, 'borang_deliverable']);
     Route::post('projek/{projek_id}/deliverable', [DeliverableController::class, 'cipta_deliverable']);
     Route::get('projek/{projek_id}/deliverable/{id}', [DeliverableController::class, 'satu_deliverable']);
     Route::put('projek/{projek_id}/deliverable/{id}', [DeliverableController::class, 'ubah_deliverable']); 
 
-    Route::get('projek/{projek_id}/dokumen', [DokumenController::class, 'senarai_dokumen']);
+    Route::get('projek/{projek_id}/dokumen/cipta', [DokumenController::class, 'borang_dokumen']);
     Route::post('projek/{projek_id}/dokumen', [DokumenController::class, 'cipta_dokumen']);
     Route::get('projek/{projek_id}/dokumen/{id}', [DokumenController::class, 'satu_dokumen']);
     Route::put('projek/{projek_id}/dokumen/{id}', [DokumenController::class, 'ubah_dokumen']);     
     
-    Route::get('projek/{projek_id}/invoice', [InvoiceController::class, 'senarai_invoice']);
+    Route::get('projek/{projek_id}/invoice/cipta', [InvoiceController::class, 'borang_invoice']);
     Route::post('projek/{projek_id}/invoice', [InvoiceController::class, 'cipta_invoice']);
     Route::get('projek/{projek_id}/invoice/{id}', [InvoiceController::class, 'satu_invoice']);
     Route::put('projek/{projek_id}/invoice/{id}', [InvoiceController::class, 'ubah_invoice']);     
@@ -86,17 +86,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projek/{projek_id}/keperluan-bisnes/{id}', [PenggunaController::class, 'satu_projek']);
     Route::put('projek/{projek_id}/keperluan-bisnes/{id}', [PenggunaController::class, 'satu_projek']);
 
-    Route::get('projek/{projek_id}/perubahan', [PerubahanController::class, 'senarai_perubahan']);
+    Route::get('projek/{projek_id}/perubahan/cipta', [PerubahanController::class, 'borang_perubahan']);
     Route::post('projek/{projek_id}/perubahan', [PerubahanController::class, 'cipta_perubahan']);
     Route::get('projek/{projek_id}/perubahan/{id}', [PerubahanController::class, 'satu_perubahan']);
     Route::put('projek/{projek_id}/perubahan/{id}', [PerubahanController::class, 'ubah_perubahan']);  
     
-    Route::get('projek/{projek_id}/ralat', [RalatController::class, 'senarai_ralat']);
+    Route::get('projek/{projek_id}/ralat/cipta', [RalatController::class, 'borang_ralat']);
     Route::post('projek/{projek_id}/ralat', [RalatController::class, 'cipta_ralat']);
     Route::get('projek/{projek_id}/ralat/{id}', [RalatController::class, 'satu_ralat']);
     Route::put('projek/{projek_id}/ralat/{id}', [RalatController::class, 'ubah_ralat']);  
     
-    Route::get('projek/{projek_id}/masalah', [MasalahController::class, 'senarai_masalah']);
+    Route::get('projek/{projek_id}/masalah/cipta', [MasalahController::class, 'borang_masalah']);
     Route::post('projek/{projek_id}/masalah', [MasalahController::class, 'cipta_masalah']);
     Route::get('projek/{projek_id}/masalah/{id}', [MasalahController::class, 'satu_masalah']);
     Route::put('projek/{projek_id}/masalah/{id}', [MasalahController::class, 'ubah_masalah']);      

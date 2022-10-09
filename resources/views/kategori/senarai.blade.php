@@ -10,7 +10,7 @@
 
 			<div class="header">
 				<h1 class="header-title">
-					kategori
+					Kategori
 				</h1>
 				<p class="header-subtitle">- - -</p>
 			</div>
@@ -23,7 +23,7 @@
 							<div class="card-actions float-end">
 								
 							</div>
-							<h5 class="card-title mb-0">---</h5>
+							<h5 class="card-title mb-0">Cipta Kategori</h5>
 						</div>
 						<div class="card-body py-3">
 
@@ -34,7 +34,7 @@
                                     <input class="form-control" type="text" name="nama">
                                 </div>         
                                                       
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Cipta</button>
                             </form>
 
 						</div>
@@ -45,7 +45,7 @@
 
                 <div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Senarai kategori</h5>
+									<h5 class="card-title">Senarai Kategori</h5>
 									<h6 class="card-subtitle text-muted">- - -</h6>
 								</div>
 

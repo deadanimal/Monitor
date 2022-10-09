@@ -23,7 +23,7 @@
 							<div class="card-actions float-end">
 								
 							</div>
-							<h5 class="card-title mb-0">---</h5>
+							<h5 class="card-title mb-0">Cipta Organisasi</h5>
 						</div>
 						<div class="card-body py-3">
 
