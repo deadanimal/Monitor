@@ -1,6 +1,6 @@
 @extends('layouts.app')
  
-@section('title', 'Best Gold Platform')
+
  
 @section('content')
 
@@ -10,12 +10,67 @@
 
 			<div class="header">
 				<h1 class="header-title">
-					--
+					Dashboard
 				</h1>
-				<p class="header-subtitle">Total gold portfolio net worth as of ...</p>
+													<button type="button" class="btn mb-1 btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														Tindakan
+													</button>
+													<div class="dropdown-menu" style="">
+														<a class="dropdown-item" href="/projek/1/">Cipta Lokasi</a>
+														<a class="dropdown-item" href="/projek/1/">Cipta Deliverable</a>
+														<a class="dropdown-item" href="/projek/1/">Cipta Invoice</a>
+														<div class="dropdown-divider"></div>
+														<a class="dropdown-item" href="#">Separated link</a>
+													</div>	
 			</div>
 
-			<div class="row">
+            <div class="row">
+
+                <div class="col-xl-12">
+
+                <div class="card">
+                    acitivity, devlierable, notifications...
+								<div class="card-header">
+									<h5 class="card-title">Activity</h5>
+									<h6 class="card-subtitle text-muted">-</h6>
+								</div>
+								<div class="table-responsive">
+									<table class="table mb-0">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Projek</th>
+												<th scope="col">Nama</th>
+                                                <th scope="col">Tarikh Mula</th>
+                                                <th scope="col">Tarikh Akhir</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Tindakan</th>
+											</tr>
+										</thead>
+										<tbody>
+
+                                            @foreach ($aktivitis as $aktiviti)
+                                            <tr>
+												<th scope="row">{{ $aktiviti->id }}</th>
+												<td>{{ $aktiviti->name }}</td>
+												<td>{{ $aktiviti->email }}</td>
+                                                <td>-</td>
+                                                <td>-</td>
+											</tr>    
+                                            @endforeach                                        
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+                            
+                            
+                </div>
+
+
+			</div>	            
+
+			<!-- <div class="row">
 				<div class="col-xl-6 col-xxl-7">
 					<div class="card flex-fill w-100">
 						<div class="card-header">
@@ -43,19 +98,13 @@
 												<h5 class="card-title">Gold Portfolio</h5>
 											</div>
 
-											<!-- <div class="col-auto">
-												<div class="avatar">
-													<div class="avatar-title rounded-circle bg-primary-dark">
-														<i class="align-middle" data-feather="truck"></i>
-													</div>
-												</div>
-											</div> -->
+				
 										</div>
 										<h1 class="display-5 mt-1 mb-3">
 											{{ number_format(($user->alloted_gold + $user->unalloted_gold) / 1000000, 2, '.', ',') }}
 										</h1>
 										<div class="mb-0">
-											<!-- <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.65% </span> -->
+											
 											
 										</div>
 									</div>
@@ -72,10 +121,7 @@
 										<h1 class="display-5 mt-1 mb-3">
 											{{ number_format($user->alloted_gold / 1000000, 2, '.', ',') }}											
 										</h1>
-										<!-- <div class="mb-0">
-											<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.50% </span>
-											
-										</div> -->
+									
 									</div>
 								</div>
 							</div>
@@ -87,21 +133,12 @@
 												<h5 class="card-title">Gold Booked</h5>
 											</div>
 
-											<!-- <div class="col-auto">
-												<div class="avatar">
-													<div class="avatar-title rounded-circle bg-primary-dark">
-														<i class="align-middle" data-feather="dollar-sign"></i>
-													</div>
-												</div>
-											</div> -->
+									
 										</div>
 										<h1 class="display-5 mt-1 mb-3">
 											{{ number_format($user->enhance_gold_latest / 1000000, 2, '.', ',') }}																						
 										</h1>
-										<!-- <div class="mb-0">
-											<span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 8.35% </span>
-											
-										</div> -->
+									
 									</div>
 								</div>
 								<div class="card">
@@ -115,17 +152,14 @@
 										<h1 class="display-5 mt-1 mb-3">
 											{{ number_format($user->advance_gold_latest / 1000000, 2, '.', ',') }}																																	
 										</h1>
-										<!-- <div class="mb-0">
-											<span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -4.25% </span>
-											Less 
-										</div> -->
+									
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>		 -->
 			
 			<!-- <div class="row">
 				<div class="col-4">
@@ -591,113 +625,6 @@
 @endsection	
 
 @section('script')
-
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: 'line',
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-							label: "Orders",
-							fill: true,
-							backgroundColor: window.theme.primary,
-							borderColor: window.theme.primary,
-							borderWidth: 2,
-							data: [3, 2, 3, 5, 6, 5, 4, 6, 9, 10, 8, 9]
-						},
-						{
-							label: "Sales ($)",
-							fill: true,
-							backgroundColor: "rgba(0, 0, 0, 0.05)",
-							borderColor: "rgba(0, 0, 0, 0.05)",
-							borderWidth: 2,
-							data: [5, 4, 10, 15, 16, 12, 10, 13, 20, 22, 18, 20]
-						}
-					]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					elements: {
-						point: {
-							radius: 0
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 5
-							},
-							display: true,
-							gridLines: {
-								color: "rgba(0,0,0,0)",
-								fontColor: "#fff"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-
-	<script>
-		var savings = {!! json_encode($user->alloted_gold) !!};
-		var advance = {!! json_encode($user->advance_gold_latest) !!};
-		var enhance = {!! json_encode($user->enhance_gold_latest) !!};
-
-		document.addEventListener("DOMContentLoaded", function() {
-			// Pie chart
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: 'pie',
-				data: {
-					labels: ["Savings", "Advance", "Enhance"],
-					datasets: [{
-						data: [
-							savings / 1000000, 
-							advance / 1000000, 
-							enhance / 1000000],
-						backgroundColor: [
-							window.theme.primary,
-							window.theme.warning,
-							window.theme.danger,
-							"#E8EAED"
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					cutoutPercentage: 75
-				}
-			});
-		});
-	</script>
-
 
 
 @endsection

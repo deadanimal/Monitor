@@ -5,14 +5,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Modern and advanced gold market">
-	<meta name="author" content="Gold Panda">
-    <link rel="icon" type="image/png" href="/img/gold-bars.png" />
 
 	<!-- <title>Gold Panda - @yield('title')</title> -->
-    <title>Gold Panda</title>
+    <title>Monitor</title>
 
-	<link href="{{ URL::asset('css/modern.css') }}" rel="stylesheet">
+	<link href="https://goldpanda.pipeline.com.my/css/modern.css" rel="stylesheet">
 
 </head>
 <!-- SET YOUR THEME -->
@@ -29,9 +26,9 @@
 					<div class="d-table-cell align-middle">
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Gold Panda</h1>
+							<h1 class="h2">Monitor</h1>
 							<p class="lead">
-                            Modern Gold Platform
+                            Pipeline Project Monitoring
 
 							</p>
 						</div>
@@ -85,7 +82,7 @@
 			</symbol>
 		</defs>
 	</svg>
-	<script src="{{ URL::asset('js/app.js') }}"></script>
+	<script src="https://goldpanda.pipeline.com.my/js/app.js"></script>
 
 </body>
 

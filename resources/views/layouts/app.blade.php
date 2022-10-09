@@ -39,12 +39,25 @@
 							<span class="align-middle">Dashboard</span>
 						</a>
 					</li>	
-					
+
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="/activity">
-							<span class="align-middle">Activity</span>
+						<a class="sidebar-link" href="/projek">
+							<span class="align-middle">Projek</span>
 						</a>
 					</li>	
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/profil">
+							<span class="align-middle">Profil</span>
+						</a>
+					</li>	
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="/nota">
+							<span class="align-middle">Nota</span>
+						</a>
+					</li>			
+						
 						
 
                     @role('admin')
@@ -63,13 +76,7 @@
                             <a class="sidebar-link" href="/organisasi">
                                 <span class="align-middle">Organisasi</span>
                             </a>
-                        </li> 	
-						
-						<li class="sidebar-item">
-							<a class="sidebar-link" href="/projek">
-								<span class="align-middle">Projek</span>
-							</a>
-						</li>	
+                        </li> 								
 						
 						<li class="sidebar-item">
 							<a class="sidebar-link" href="/kategori">
@@ -196,7 +203,13 @@
 			</symbol>
 		</defs>
 	</svg>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>	
 	<script src="https://goldpanda.pipeline.com.my/js/app.js"></script>
+
 
 	@yield('script')
 

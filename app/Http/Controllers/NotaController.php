@@ -2,19 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNotaRequest;
-use App\Http\Requests\UpdateNotaRequest;
+use Illuminate\Http\Request;
 use App\Models\Nota;
+use DataTables;
 
 class NotaController extends Controller
 {
-    public function senarai() {}
+    public function senarai_nota(Request $request) {
+        $notas = Nota::all();
+     
+        if ($request->ajax()) {
+            return Datatables::collection($notas)
+                ->addIndexColumn()
+                ->make(true);
+        }
+                        
+        return view('nota.senarai', compact('notas'));
+    }
 
-    public function satu() {}
+    public function satu_nota(Request $request) {
 
-    public function cipta() {}
+    }
 
-    public function ubah() {}
+    public function cipta_nota(Request $request) {
 
-    public function gugur() {}
+    }
+
+    public function ubah_nota(Request $request) {
+
+    }
+
+    public function gugur_nota(Request $request) {
+
+    }
 }
