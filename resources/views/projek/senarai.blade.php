@@ -15,47 +15,6 @@
 				<p class="header-subtitle">- - -</p>
 			</div>
 
-			@role('admin')
-			<div class="row">
-
-				<div class="col-xl-5">
-					<div class="card flex-fill w-100">
-						<div class="card-header">
-							<div class="card-actions float-end">
-								
-							</div>
-							<h5 class="card-title mb-0">Cipta Projek</h5>
-						</div>
-						<div class="card-body py-3">
-
-                            <form action="/projek" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label">Nama</label>
-                                    <input class="form-control" type="text" name="nama">
-                                </div>         
-                                <div class="mb-3">
-                                    <label class="form-label">Simbol</label>
-                                    <input class="form-control" type="text" name="simbol">
-                                </div>        
-                                <div class="mb-3">
-                                    <label class="form-label">Organisasi</label>
-                                    <select class="form-control mb-3" name="organisasi_id">
-                                        @foreach ($orgs as $org)
-										    <option value="{{ $org->id }}">{{ $org->nama }}</option>
-                                        @endforeach     
-									</select>                                    
-                                </div>                                                   
-                                <button type="submit" class="btn btn-primary">Cipta</button>
-                            </form>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-			@endrole
-
 
 			<div class="row">
 

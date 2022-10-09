@@ -28,19 +28,12 @@
 	<div class="wrapper">
 
 		<nav id="sidebar" class="sidebar">
-			<a class="sidebar-brand" href="/app">
+			<a class="sidebar-brand" href="/">
 				Monitor
 			</a>
 			<div class="sidebar-content">
 
 				<ul class="sidebar-nav">
-
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/">
-							<span class="align-middle">Dashboard</span>
-						</a>
-					</li>	
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/projek">
@@ -62,6 +55,12 @@
                         <li class="sidebar-header">
                             Administrative
                         </li>	    
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/borang-admin">
+                                <span class="align-middle">OSC Borang</span>
+                            </a>
+                        </li> 						
                         
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/pengguna">

@@ -8,6 +8,7 @@ use DataTables;
 use App\Models\Activity;
 use App\Models\Projek;
 use App\Models\Organisasi;
+use App\Models\User;
 
 class ProjekController extends Controller
 {
@@ -47,13 +48,14 @@ class ProjekController extends Controller
         
         $id = $request->route('id');
         $projek = Projek::find($id);  
+        $pipers = User::where('organisasi_id', 1)->get();
 
         $aktivitis = Activity::where([
             ['projek_id', '=', $projek->id]
         ])->get();
 
         return view('projek.satu', compact([
-            'projek', 'aktivitis'
+            'projek', 'aktivitis', 'pipers'
         ]));   
     }
 

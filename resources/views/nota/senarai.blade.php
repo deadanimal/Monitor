@@ -13,12 +13,7 @@
 					Nota
 				</h1>
 				<!-- <p class="header-subtitle">- - -</p> -->
-													<button type="button" class="btn mb-1 btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														Tindakan
-													</button>
-													<div class="dropdown-menu" style="">
-														<a class="dropdown-item" href="/nota/cipta">Cipta Nota</a>
-													</div>					
+														
 			</div>
 
 			<div class="row">

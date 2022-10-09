@@ -48,4 +48,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Organisasi::class);
     }    
+
+    public function activity_pekerja()
+    {
+        return $this->hasMany(Activity::class, 'pekerja_id');
+    }   
+    
+    public function activity_supervisor()
+    {
+        return $this->hasMany(Activity::class, 'supervisor_id');
+    }        
 }

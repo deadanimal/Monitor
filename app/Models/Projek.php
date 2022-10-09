@@ -12,5 +12,10 @@ class Projek extends Model
     public function organisasi()
     {
         return $this->belongsTo(Organisasi::class);
-    }      
+    }     
+    
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }       
 }

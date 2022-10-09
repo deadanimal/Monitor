@@ -30,15 +30,14 @@ class PenggunaController extends Controller
 
         return view('dashboard', compact([
             'user', 'aktivitis', 'deliverables', 'notis'
-        ]))->withSuccess('Task Created Successfully!');
+        ]));
     }
 
     public function profil(Request $request) {
 
         $user = $request->user();
         $user_id = $user->id;
-        alert()->error('ErrorAlert','Lorem ipsum dolor sit amet.');
-        toast('Your Post as been submited!','success');        
+        
 
         return view('pengguna.profil', compact('user'));
     }  
@@ -106,6 +105,15 @@ class PenggunaController extends Controller
 
         return redirect('/pengguna');
 
+    }
+
+    public function senarai_borang_admin(Request $request) {
+        $penggunas = User::all();
+        $roles = Role::all();
+        $orgs = Organisasi::all();        
+        return view('borang', compact([
+            'penggunas', 'roles', 'orgs'
+        ]));
     }
 
 

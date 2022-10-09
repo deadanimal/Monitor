@@ -17,29 +17,6 @@
 
 			<div class="row">
 
-				<div class="col-xl-5">
-					<div class="card flex-fill w-100">
-						<div class="card-header">
-							<div class="card-actions float-end">
-								
-							</div>
-							<h5 class="card-title mb-0">Cipta Kategori</h5>
-						</div>
-						<div class="card-body py-3">
-
-                            <form action="/kategori" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label class="form-label">Nama</label>
-                                    <input class="form-control" type="text" name="nama">
-                                </div>         
-                                                      
-                                <button type="submit" class="btn btn-primary">Cipta</button>
-                            </form>
-
-						</div>
-					</div>
-				</div>
 
                 <div class="col-xl-12">
 
