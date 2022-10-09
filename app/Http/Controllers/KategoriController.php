@@ -2,18 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use DataTables;
+
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
-    public function senarai() {}
+    public function senarai_kategori(Request $request) {
 
-    public function satu() {}
 
-    public function cipta() {}
+        $kategoris = Kategori::all();
 
-    public function ubah() {}
+        if ($request->ajax()) {
+            return Datatables::collection($kategoris)
+                ->addIndexColumn()    
+                ->make(true);
+        }              
 
-    public function gugur() {}
+
+        return view('kategori.senarai', compact([
+            'kategoris'
+        ]))->withSuccess('Task Created Successfully!');        
+    }
+
+    public function satu_kategori(Request $request) {
+
+    }
+
+    public function cipta_kategori(Request $request) {
+        $kategori = New Kategori;
+        $kategori->nama = $request->nama;
+        //$kategori->taggable_id = $request->taggable_id;
+        //$kategori->taggable_type = $request->taggable_type;
+        $kategori->save();
+        return back()->withSuccess('Nota dicipta');
+    }
+
+    public function ubah_kategori(Request $request) {
+
+    }
+
+    public function gugur_kategori(Request $request) {
+
+    }
 }

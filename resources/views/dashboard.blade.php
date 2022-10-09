@@ -29,7 +29,6 @@
                 <div class="col-xl-12">
 
                 <div class="card">
-                    acitivity, devlierable...
 								<div class="card-header">
 									<h5 class="card-title">Activity</h5>
 									<h6 class="card-subtitle text-muted">-</h6>
@@ -68,7 +67,52 @@
                 </div>
 
 
-			</div>	            
+			</div>	  
+            
+            <div class="row">
+
+                <div class="col-xl-12">
+
+                <div class="card">
+								<div class="card-header">
+									<h5 class="card-title">Deliverable</h5>
+									<h6 class="card-subtitle text-muted">-</h6>
+								</div>
+								<div class="table-responsive">
+									<table class="table mb-0">
+										<thead>
+											<tr>
+												<th scope="col">#</th>
+												<th scope="col">Projek</th>
+												<th scope="col">Nama</th>
+                                                <th scope="col">Tarikh Mula</th>
+                                                <th scope="col">Tarikh Akhir</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Tindakan</th>
+											</tr>
+										</thead>
+										<tbody>
+
+                                            @foreach ($aktivitis as $aktiviti)
+                                            <tr>
+												<th scope="row">{{ $aktiviti->id }}</th>
+												<td>{{ $aktiviti->name }}</td>
+												<td>{{ $aktiviti->email }}</td>
+                                                <td>-</td>
+                                                <td>-</td>
+											</tr>    
+                                            @endforeach                                        
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+                            
+                            
+                </div>
+
+
+			</div>	             
 
 			<!-- <div class="row">
 				<div class="col-xl-6 col-xxl-7">

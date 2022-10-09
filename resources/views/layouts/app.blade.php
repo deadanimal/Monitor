@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>	
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>		
 
 </head>
 
@@ -88,6 +88,8 @@
 		</nav>
 
 		<div class="main">
+
+			@include('sweetalert::alert')
 			<nav class="navbar navbar-expand navbar-theme">
 				<a class="sidebar-toggle d-flex me-2">
 					<i class="hamburger align-self-center"></i>
@@ -111,7 +113,7 @@
 				</div>
 			</nav>
 
-			@if ($errors->any())
+			<!-- @if ($errors->any())
 
 				@foreach ($errors->all() as $error)
 
@@ -120,13 +122,13 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title">Error Message</h5>
-									<!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+									
 								</div>
 								<div class="modal-body m-3">
 									<p class="mb-0">{{ $error }}</p>
 								</div>
 								<div class="modal-footer">
-									<!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button> -->
+									
 									<button type="button" class="btn btn-danger" onclick="closeModal()">Close</button>
 								</div>
 							</div>
@@ -158,7 +160,7 @@
 <div class="alert alert-success">
 <strong>{{@message}}</strong>
 </div>
-@endif			
+@endif			 -->
 
 
 			@yield('content')

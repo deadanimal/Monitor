@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
 use DataTables;
 
 use App\Models\User;
@@ -25,15 +26,19 @@ class PenggunaController extends Controller
         $deliverables = Deliverable::all();
         $notis = Notifikasi::all();
 
+
+
         return view('dashboard', compact([
             'user', 'aktivitis', 'deliverables', 'notis'
-        ]));
+        ]))->withSuccess('Task Created Successfully!');
     }
 
     public function profil(Request $request) {
 
         $user = $request->user();
         $user_id = $user->id;
+        alert()->error('ErrorAlert','Lorem ipsum dolor sit amet.');
+        toast('Your Post as been submited!','success');        
 
         return view('pengguna.profil', compact('user'));
     }  
