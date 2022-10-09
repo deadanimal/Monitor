@@ -63,46 +63,27 @@
 
                 	<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Always responsive</h5>
-									<h6 class="card-subtitle text-muted">Across every breakpoint, use <code>.table-responsive</code> for horizontally scrolling
-										tables.</h6>
+									<h5 class="card-title">Senarai Projek</h5>
+									<h6 class="card-subtitle text-muted">- - -</h6>
 								</div>
-								<div class="table-responsive">
-									<table class="table mb-0">
-										<thead>
-											<tr>
-												<th scope="col">#</th>
-												<th scope="col">Organisasi</th>
-												<th scope="col">Nama</th>
-												<th scope="col"></th>
 
-											</tr>
-										</thead>
-										<tbody>
 
-                                            @foreach ($projeks as $projek)
-                                            <tr>
-												<th scope="row">{{ $projek->id }}</th>
-												<td>{{ $projek->organisasi->nama }}</td>
-												<td>{{ $projek->nama }} ({{ $projek->simbol }})</td>
-												<td>
-													<button type="button" class="btn mb-1 btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														Tindakan
-													</button>
-													<div class="dropdown-menu" style="">
-														<a class="dropdown-item" href="/projek/{{ $projek->id }}">Lihat</a>
-														<a class="dropdown-item" href="#">Another action</a>
-														<a class="dropdown-item" href="#">Something else here</a>
-														<div class="dropdown-divider"></div>
-														<a class="dropdown-item" href="#">Separated link</a>
-													</div>													
-												</td>
-											</tr>    
-                                            @endforeach                                        
-
-										</tbody>
-									</table>
+								<div class="card-body">
+									<table class="table table-bordered projek-datatable">
+											<thead>
+												<tr>
+													<th>No</th>
+													<th>Organisasi</th>
+													<th>Nama</th>
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+									</table>	
 								</div>
+
+							
 							</div>
                             
                             
@@ -124,5 +105,23 @@
 
 @section('script')
 
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.projek-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "{{ route('projek.senarai') }}",
+        columns: [
+			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			{data: 'organisasi', name: 'organisasi'},
+            {data: 'nama', name: 'nama'},
+			{data: 'link', name: 'link'},
+        ]
+    });
+
+  });
+</script>
 
 @endsection

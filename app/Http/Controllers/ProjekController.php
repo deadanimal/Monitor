@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DataTables;
 
 use App\Models\Activity;
 use App\Models\Projek;
@@ -14,9 +15,29 @@ class ProjekController extends Controller
 
         $user = $request->user();
         $user_id = $user->id;
+        
+        $user_organisasi = Organisasi::where('id', $user->organisasi_id)->first();
+        if ($user_organisasi->id != 1) {
+            $orgs = Organisasi::all();
+            $projeks = Projek::where('organisasi_id', $user_organisasi->id)->get();  
+        } else {
+            $orgs = Organisasi::all();
+            $projeks = Projek::all();            
+        }
 
-        $orgs = Organisasi::all();
-        $projeks = Projek::all();
+        if ($request->ajax()) {
+            return Datatables::collection($projeks)
+                ->addIndexColumn()
+                ->addColumn('organisasi', function (Projek $projek) {
+                    return $projek->organisasi->nama;
+                })   
+                ->addColumn('link', function (Projek $projek) {
+                    $url = '/projek/'.$projek->id;
+                    return '<a href="'.$url.'">Lihat </a>';
+                })     
+                ->rawColumns(['link'])              
+                ->make(true);
+        }                
 
 
         return view('projek.senarai', compact('projeks', 'orgs'));
