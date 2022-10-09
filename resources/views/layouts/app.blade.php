@@ -10,7 +10,7 @@
 
 	<title>Monitor</title>
 
-	<link href="https://goldpanda.pipeline.com.my/css/modern.css" rel="stylesheet">
+	<link href="{{ URL::asset('css/modern.css') }}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
@@ -46,11 +46,6 @@
 						</a>
 					</li>	
 					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="/profil">
-							<span class="align-middle">Profil</span>
-						</a>
-					</li>	
 					
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/nota">
@@ -106,10 +101,10 @@
 								<i class="align-middle fas fa-cog"></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">								
-                                <a class="dropdown-item" href="/app/support"><i class="align-middle me-1 fas fa-fw fa-life-ring"></i>Support</a>
-                                <a class="dropdown-item" href="/app/profile"><i class="align-middle me-1 fas fa-fw fa-user"></i>Profile</a>
+                                <a class="dropdown-item" href="/notifikasi"><i class="align-middle me-1 fas fa-fw fa-envelope"></i>Notifikasi</a>
+                                <a class="dropdown-item" href="/profil"><i class="align-middle me-1 fas fa-fw fa-user"></i>Profil</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="/logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Sign Out</a>
+								<a class="dropdown-item" href="/logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Log Keluar</a>
 							</div>
 						</li>
 					</ul>
@@ -204,11 +199,11 @@
 		</defs>
 	</svg>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>	
-	<script src="https://goldpanda.pipeline.com.my/js/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>	
+	<script src="{{ URL::asset('js/app.js') }}"></script>
 
 
 	@yield('script')

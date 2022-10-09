@@ -94,6 +94,7 @@
     var table = $('.nota-datatable').DataTable({
         processing: true,
         serverSide: true,
+        responsive: true,
         ajax: "{{ route('nota.senarai') }}",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			

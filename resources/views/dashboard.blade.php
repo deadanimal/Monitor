@@ -12,7 +12,7 @@
 				<h1 class="header-title">
 					Dashboard
 				</h1>
-													<button type="button" class="btn mb-1 btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<!-- <button type="button" class="btn mb-1 btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 														Tindakan
 													</button>
 													<div class="dropdown-menu" style="">
@@ -21,7 +21,7 @@
 														<a class="dropdown-item" href="/projek/1/">Cipta Invoice</a>
 														<div class="dropdown-divider"></div>
 														<a class="dropdown-item" href="#">Separated link</a>
-													</div>	
+													</div>	 -->
 			</div>
 
             <div class="row">
@@ -29,7 +29,7 @@
                 <div class="col-xl-12">
 
                 <div class="card">
-                    acitivity, devlierable, notifications...
+                    acitivity, devlierable...
 								<div class="card-header">
 									<h5 class="card-title">Activity</h5>
 									<h6 class="card-subtitle text-muted">-</h6>
