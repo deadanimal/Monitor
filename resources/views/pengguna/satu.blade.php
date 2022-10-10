@@ -75,7 +75,24 @@
                 <div class="card">
 								<div class="card-header">
 									<h5 class="card-title">Senarai Lokasi</h5>
-									<h6 class="card-subtitle text-muted">- - -</h6>
+
+								</div>
+
+								<div class="card-body">
+
+										<table class="table table-striped table-sm lokasi-datatable">
+											<thead>
+												<tr>
+													<th>Masa</th>													
+													<th>Lokasi</th>
+													<th>Latitude</th>
+													<th>Longitude</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+									    </table>
+
 								</div>
 								
 							</div>
@@ -117,5 +134,25 @@
 
 @section('script')
 
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.lokasi-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/pengguna/{{$user->id}}/lokasi",
+        columns: [	
+			{data: 'created_at', name: 'created_at'},
+            {data: 'lokasi', name: 'lokasi'},
+            {data: 'lat', name: 'lat'},
+            {data: 'lng', name: 'lng'},            
+        ]
+    });
+
+
+  });
+</script>
 
 @endsection

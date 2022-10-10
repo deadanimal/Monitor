@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profil', [PenggunaController::class, 'profil'])->name('profil');    
     Route::get('profil/log', [PenggunaController::class, 'log'])->name('log');   
     Route::post('profil/ubah-password', [PenggunaController::class, 'ubah_password']);
-    Route::post('profil/lokasi', [PenggunaController::class, 'lokasi'])->name('lokasi');
+    Route::post('profil/lokasi', [PenggunaController::class, 'cipta_lokasi'])->name('cipta_lokasi');
 
     // Admin Function
     Route::middleware(['role:admin'])->group(function () {
@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('borang-admin', [PenggunaController::class, 'senarai_borang_admin']);
         Route::get('pengguna', [PenggunaController::class, 'senarai_pengguna'])->name('pengguna.senarai');
         Route::get('pengguna/{id}', [PenggunaController::class, 'satu_pengguna'])->name('pengguna.satu');
+        Route::get('pengguna/{id}/lokasi', [PenggunaController::class, 'senarai_lokasi'])->name('pengguna.senarai');
         Route::post('pengguna', [PenggunaController::class, 'cipta_pengguna']);
         Route::get('organisasi', [OrganisasiController::class, 'senarai_organisasi'])->name('organisasi.senarai');
         Route::post('organisasi', [OrganisasiController::class, 'cipta_organisasi']);

@@ -15,6 +15,7 @@ use App\Models\Deliverable;
 use App\Models\Notifikasi;
 use App\Models\Role;
 use App\Models\Organisasi;
+use App\Models\Lokasi;
 
 class PenggunaController extends Controller
 {
@@ -197,7 +198,45 @@ class PenggunaController extends Controller
         $projeks = Projek::all();
         $pipers = User::where('organisasi_id', 1)->get();
         return view('dashboard.jadual_projek', compact('projek', 'projeks', 'pipers'));
-    }         
+    }      
+    
+    public function cipta_lokasi(Request $req) {
+        $user_id = $req->user()->id;
+
+        $lokasi = New Lokasi;
+
+        $lokasi->lat = $req->latitude_hidden;
+        $lokasi->lng = $req->longitude_hidden;
+        $lokasi->lokasi = $req->lokasi;
+        $lokasi->user_id = $user_id;
+
+        $lokasi->save();
+        toast('Lokasi dikemaskini!','success');
+        return back();   
+    }
+
+    public function senarai_lokasi(Request $req) {
+
+        $id = (int)$req->route('id');
+        $lokasi = Lokasi::where('user_id', $id)->get();
+
+        return Datatables::collection($lokasi)
+            ->addIndexColumn()
+            // ->addColumn('pelaksana', function (lokasi $lokasi) {
+            //     return $lokasi->pekerja->name;
+            // })               
+            // ->addColumn('status_', function (lokasi $lokasi) {
+            //     $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($lokasi->status).'</span>';
+            //     return $html_badge;
+            // })        
+            // ->addColumn('link', function (lokasi $lokasi) {
+            //     $url = '/projek/'.$lokasi->projek_id.'/lokasi/'.$lokasi->id;
+            //     $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+            //     return $html_button;
+            // })     
+            // ->rawColumns(['status_','link'])               
+            ->make(true);      
+    }    
 
 
 }

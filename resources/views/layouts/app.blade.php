@@ -133,8 +133,10 @@
 							<a class="nav-link dropdown-toggle position-relative" href="#" id="userDropdown" data-bs-toggle="dropdown">
 								<i class="align-middle fas fa-cog"></i>
 							</a>
-							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">								
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+													
                                 <!-- <a class="dropdown-item" href="/notifikasi"><i class="align-middle me-1 fas fa-fw fa-envelope"></i>Notifikasi</a> -->
+								<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#lokasiModal"	><i class="align-middle me-1 fas fa-fw fa-map-marker"></i>Lokasi</a>
                                 <a class="dropdown-item" href="/profil"><i class="align-middle me-1 fas fa-fw fa-user"></i>Profil</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Log Keluar</a>
@@ -240,6 +242,73 @@
 
 
 	@yield('script')
+
+
+
+
+									<div class="modal fade" id="lokasiModal" tabindex="-1" role="dialog" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered" role="document">
+											<form action="/profil/lokasi" method="POST">
+												@csrf
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Kemaskini Lokasi</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body m-3">
+													<p class="mb-3">Sila berikan "permission" untuk alat mengambil koordinat lokasi anda.</p>													
+
+
+													<div class="mb-3">
+														<label class="form-label">Lokasi</label>
+														<select class="form-control mb-3" id="lokasi" name="lokasi">                                                        
+															<option value="RUMAH">Rumah</option>
+															<option value="PEJABAT">Pejabat</option>
+															<option value="PELANGGAN">Pelanggan</option>
+															<option value="LUAR">Luar</option>														
+														</select> 														
+													</div>	
+													
+													<div class="mb-3">
+														<label class="form-label"><b>Latitude</b></label>	
+														<p id="latitude">NA</p>												
+														<input type="hidden" name="latitude_hidden" id="latitude_hidden">
+													</div>	
+													
+													<div class="mb-3">
+														<label class="form-label"><b>Longitude</b></label>		
+														<p id="longitude">NA</p>											
+														<input type="hidden" name="longitude_hidden" id="longitude_hidden">
+													</div>															
+   													
+												</div>
+												<div class="modal-footer">		
+													<a onclick="getCoords()" class="btn btn-warning">Dapatkan Koordinat</a>																								
+													<button type="submit" class="btn btn-primary">Kemaskini Lokasi</button>
+												</div>
+											</div>
+											</form>
+										</div>
+									</div>	
+
+									<script>
+
+function getCoords() {
+
+	navigator.geolocation.getCurrentPosition((position)=> {
+    	const p=position.coords;
+		document.getElementById("latitude_hidden").value = p.latitude;
+		document.getElementById("longitude_hidden").value = p.longitude;
+		document.getElementById('latitude').innerText = p.latitude;
+		document.getElementById('longitude').innerText = p.longitude;
+    	console.log(p.latitude,p.longitude);
+	})	
+
+}										
+									
+									</script>
+
+
 
 
 </body>
