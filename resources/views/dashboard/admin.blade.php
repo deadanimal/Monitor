@@ -46,8 +46,8 @@
 													<td>{{$act->organisasi->simbol}}</td>
 													<td>{{$act->projek->nama}}</td>
 													<td>{{$act->nama}}</td>
-                                                    <td>{{$act->kategori}}</td>
-                                                    <td>{{$act->status}}</td>
+                                                    <td><span class="badge rounded-pill bg-primary">{{$act->kategori}}</span></td>
+                                                    <td><span class="badge rounded-pill bg-primary">{{$act->status}}</span></td>
                                                     <td>{{$act->tarikh_rancang}}</td>
                                                     <td>
 														<a href="/projek/{{$act->projek->id}}/activity/{{ $act->id }}"><button class="btn btn-primary">Lihat</button></a>
@@ -99,8 +99,8 @@
 													<td>{{$deli->organisasi->simbol}}</td>
 													<td>{{$deli->projek->nama}}</td>
 													<td>{{$deli->nama}}</td>
-                                                    <td>{{$deli->kategori}}</td>
-                                                    <td>{{$deli->status}}</td>
+                                                    <td><span class="badge rounded-pill bg-primary">{{$deli->kategori}}</span></td>
+                                                    <td><span class="badge rounded-pill bg-primary">{{$deli->status}}</span></td>
                                                     <td>{{$deli->tarikh_rancang}}</td>
                                                     <td>
 														<a href="/projek/{{$deli->projek->id}}/deliverable/{{ $deli->id }}"><button class="btn btn-primary">Lihat</button></a>													

@@ -48,11 +48,11 @@
 					</li>	
 					
 					
-					<li class="sidebar-item">
+					<!-- <li class="sidebar-item">
 						<a class="sidebar-link" href="/nota">
 							<span class="align-middle">Nota</span>
 						</a>
-					</li>	
+					</li>	 -->
 					
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/rujukan">

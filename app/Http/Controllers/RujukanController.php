@@ -16,12 +16,16 @@ class RujukanController extends Controller
         if ($request->ajax()) {
             return Datatables::collection($rujs)
                 ->addIndexColumn()
+                ->addColumn('kategori_', function (Rujukan $rujukan) {
+                    $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($rujukan->kategori).'</span>';
+                    return $html_badge;
+                })                     
                 ->addColumn('link', function (Rujukan $rujukan) {
                     $url = '/rujukan/'.$rujukan->id;
                     $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                     return $html_button;
                 })     
-                ->rawColumns(['link'])                 
+                ->rawColumns(['kategori_','link'])                 
                 ->make(true);
         }   
 

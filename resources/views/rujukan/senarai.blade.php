@@ -72,7 +72,7 @@
         ajax: "/rujukan",
         columns: [
 			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
-            {data: 'kategori', name: 'kategori'},
+            {data: 'kategori_', name: 'kategori_'},
 			{data: 'nama', name: 'nama'},
 			{data: 'link', name: 'link'},
         ]
