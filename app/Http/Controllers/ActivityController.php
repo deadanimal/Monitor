@@ -74,7 +74,8 @@ class ActivityController extends Controller
         $projek_id = (int)$request->route('projek_id');
         $projek = Projek::find($projek_id);
         $organisasi = Organisasi::find($projek->organisasi->id);
-        $user_id = $request->user()->id;
+        $user = $request->user();
+        $user_id = $user->id;
     
         $activity = New Activity;
         
@@ -89,6 +90,11 @@ class ActivityController extends Controller
         $activity->supervisor_id = $user_id;
 
         $activity->save();
+
+        activity()
+            ->performedOn($activity)
+            ->causedBy($user)
+            ->log('cipta');        
 
         toast('Aktiviti dicipta!','success');
         return back();
@@ -107,7 +113,8 @@ class ActivityController extends Controller
     public function kemaskini_activity(Request $req) {
         $projek_id = (int)$req->route('projek_id');
         $id = (int)$req->route('id');
-        $user_id = $req->user()->id;
+        $user = $req->user();
+        $user_id = $user->id;
         
         $projek = Projek::find($projek_id);        
         $act = Activity::find($id);
@@ -130,6 +137,11 @@ class ActivityController extends Controller
         }
         
         $act->save();
+
+        activity()
+            ->performedOn($act)
+            ->causedBy($user)
+            ->log('kemaskini');           
 
         toast('Aktiviti dikemaskini!','success');
         return back();

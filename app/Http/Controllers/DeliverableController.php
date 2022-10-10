@@ -67,7 +67,8 @@ class DeliverableController extends Controller
         $projek_id = (int)$request->route('projek_id');
         $projek = Projek::find($projek_id);
         $organisasi = Organisasi::find($projek->organisasi->id);
-        $user_id = $request->user()->id;
+        $user = $request->user();
+        $user_id = $user->id;
     
         $deliverable = New Deliverable;
         
@@ -82,6 +83,11 @@ class DeliverableController extends Controller
         $deliverable->supervisor_id = $user_id;
 
         $deliverable->save();
+
+        activity()
+            ->performedOn($deliverable)
+            ->causedBy($user)
+            ->log('cipta');          
 
         toast('Deliverable dicipta!','success');
         return back();
@@ -100,7 +106,8 @@ class DeliverableController extends Controller
     public function kemaskini_deliverable(Request $req) {
         $projek_id = (int)$req->route('projek_id');
         $id = (int)$req->route('id');
-        $user_id = $req->user()->id;
+        $user = $request->user();
+        $user_id = $user->id;
         
         $projek = Projek::find($projek_id);        
         $deli = Deliverable::find($id);
@@ -123,6 +130,11 @@ class DeliverableController extends Controller
         }
         
         $deli->save();
+
+        activity()
+            ->performedOn($deli)
+            ->causedBy($user)
+            ->log('edit');        
 
         toast('Hasil dikemaskini!','success');
         return back();
