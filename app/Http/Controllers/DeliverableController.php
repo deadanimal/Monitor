@@ -38,7 +38,8 @@ class DeliverableController extends Controller
 
     public function senarai_deliverable_pengguna(Request $request) {
 
-        $deliverables = Deliverable::where('pekerja_id', $request->user()->id)->get();
+        $id = (int)$request->route('id');        
+        $deliverables = Deliverable::where('pekerja_id', $id)->get();
 
         return Datatables::collection($deliverables)
             ->addIndexColumn()     

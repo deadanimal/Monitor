@@ -59,7 +59,24 @@
 							<span class="align-middle">Rujukan</span>
 						</a>
 					</li>	
-					@endif				
+					@endif	
+					
+                    @role('admin|pmo')    
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/jadual-staff/{{auth()->user()->id}}">
+                                <span class="align-middle">Jadual Staff</span>
+                            </a>
+                        </li> 	
+						
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/jadual-projek/1">
+                                <span class="align-middle">Jadual Projek</span>
+                            </a>
+                        </li> 								
+                    							
+ 
+                    @endrole 					
 						
 						
 

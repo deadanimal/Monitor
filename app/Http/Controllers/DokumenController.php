@@ -24,12 +24,15 @@ class DokumenController extends Controller
 
         return Datatables::collection($dokumens)
             ->addIndexColumn()
+            ->addColumn('pemilik', function (Dokumen $dokumen) {
+                return $dokumen->user->name;
+            })             
             ->addColumn('link', function (Dokumen $dokumen) {
                 $url = 'https://pipeline-apps.sgp1.digitaloceanspaces.com/'.$dokumen->path;
                 $html_button = '<a href="'.$url.'" target="_blank"><button class="btn btn-primary">Muat Turun</button></a>';
                 return $html_button;
             })     
-            ->rawColumns(['link'])                
+            ->rawColumns(['pemilik','link'])                
             ->make(true);        
     }
 

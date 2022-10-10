@@ -45,7 +45,8 @@ class ActivityController extends Controller
 
     public function senarai_activity_pengguna(Request $request) {
 
-        $activities = Activity::where('pekerja_id', $request->user()->id)->get();
+        $id = (int)$request->route('id');
+        $activities = Activity::where('pekerja_id', $id)->get();
 
         return Datatables::collection($activities)
             ->addIndexColumn()      

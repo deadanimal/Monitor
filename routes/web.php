@@ -60,7 +60,10 @@ Route::middleware(['auth'])->group(function () {
         Route::put('projek/{projek_id}/deliverable/{id}', [DeliverableController::class, 'ubah_deliverable']);        
 
         Route::post('projek/{projek_id}/invoice', [InvoiceController::class, 'cipta_invoice']);
-        Route::put('projek/{projek_id}/invoice/{id}', [InvoiceController::class, 'ubah_invoice']);        
+        Route::put('projek/{projek_id}/invoice/{id}', [InvoiceController::class, 'ubah_invoice']);    
+        
+        Route::get('jadual-staff/{id}', [PenggunaController::class, 'jadual_staff']);
+        Route::get('jadual-projek/{id}', [PenggunaController::class, 'jadual_projek']);
         
         
     });      
@@ -118,8 +121,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('projek/{projek_id}/masalah/{id}/sah', [MasalahController::class, 'sah_masalah']);    
 
     # User Specific
-    Route::get('pengguna/{pengguna_id}/activity', [ActivityController::class, 'senarai_activity_pengguna']);
-    Route::get('pengguna/{pengguna_id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
+    Route::get('pengguna/{id}/activity', [ActivityController::class, 'senarai_activity_pengguna']);
+    Route::get('pengguna/{id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
 
 });
 

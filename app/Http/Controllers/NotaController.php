@@ -16,13 +16,16 @@ class NotaController extends Controller
         $notas = Nota::where('projek_id', $projek_id)->get();
 
         return Datatables::collection($notas)
-            ->addIndexColumn()    
+            ->addIndexColumn() 
+            ->addColumn('pemilik', function (Nota $nota) {
+                return $nota->user->name;
+            })                                        
             ->addColumn('link', function (Nota $nota) {
                 $url = '/projek/'.$nota->projek_id.'/nota/'.$nota->id;
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
             })         
-            ->rawColumns(['link'])                               
+            ->rawColumns(['pemilik','link'])                                 
             ->make(true);      
     }
 

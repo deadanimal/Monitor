@@ -10,6 +10,7 @@ use DataTables;
 use App\Models\User;
 
 use App\Models\Activity;
+use App\Models\Projek;
 use App\Models\Deliverable;
 use App\Models\Notifikasi;
 use App\Models\Role;
@@ -182,6 +183,21 @@ class PenggunaController extends Controller
         toast('Kata laluan diubah!','success');
         return back();   
     }
+
+    public function jadual_staff(Request $request) {
+        $id = (int)$request->route('id');
+        $piper = User::find($id);
+        $pipers = User::where('organisasi_id', 1)->get();
+        return view('dashboard.jadual_staff', compact('piper', 'pipers'));
+    }   
+    
+    public function jadual_projek(Request $request) {
+        $id = (int)$request->route('id');
+        $projek = Projek::find($id);
+        $projeks = Projek::all();
+        $pipers = User::where('organisasi_id', 1)->get();
+        return view('dashboard.jadual_projek', compact('projek', 'projeks', 'pipers'));
+    }         
 
 
 }

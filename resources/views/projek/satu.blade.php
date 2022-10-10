@@ -297,7 +297,7 @@
 												<tr>
 													<th>Tarikh</th>
 													<th>Nama</th>
-													<th>Versi</th>
+													<th>Pemilik</th>
                                                     <th></th>
 												</tr>
 											</thead>
@@ -343,6 +343,7 @@
 												<tr>
 													<th>Tarikh</th>
 													<th>Nama</th>
+													<th>Pemilik</th>
                                                     <th></th>
 												</tr>
 											</thead>
@@ -578,7 +579,7 @@
         columns: [
 			{data: 'created_at', name: 'created_at'},			
             {data: 'nama', name: 'nama'},
-			{data: 'nama', name: 'versi'},
+			{data: 'pemilik', name: 'pemilik'},
             {data: 'link', name: 'link'},
         ]
     });
@@ -612,6 +613,7 @@
         columns: [
 			{data: 'created_at', name: 'created_at'},			
             {data: 'nama', name: 'nama'},
+			{data: 'pemilik', name: 'pemilik'},
             {data: 'link', name: 'link'},
         ]
     });
