@@ -116,7 +116,7 @@
 								<i class="align-middle fas fa-cog"></i>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">								
-                                <a class="dropdown-item" href="/notifikasi"><i class="align-middle me-1 fas fa-fw fa-envelope"></i>Notifikasi</a>
+                                <!-- <a class="dropdown-item" href="/notifikasi"><i class="align-middle me-1 fas fa-fw fa-envelope"></i>Notifikasi</a> -->
                                 <a class="dropdown-item" href="/profil"><i class="align-middle me-1 fas fa-fw fa-user"></i>Profil</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="/logout"><i class="align-middle me-1 fas fa-fw fa-arrow-alt-circle-right"></i> Log Keluar</a>

@@ -31,7 +31,6 @@
 									<table class="table table-striped table-sm projek-datatable">
 											<thead>
 												<tr>
-													<th>No</th>
 													<th>Organisasi</th>
 													<th>Nama</th>
 													<th></th>
@@ -73,7 +72,7 @@
         responsive: true,
         ajax: "/projek",
         columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			//{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
 			{data: 'organisasi', name: 'organisasi'},
             {data: 'nama', name: 'nama'},
 			{data: 'link', name: 'link'},

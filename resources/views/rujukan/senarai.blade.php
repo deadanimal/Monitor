@@ -30,8 +30,7 @@
 								<div class="card-body">
 									<table class="table table-striped table-sm rujukan-datatable">
 											<thead>
-												<tr>
-													<th>No</th>
+												<tr>													
 													<th>Kategori</th>
 													<th>Nama</th>
 													<th></th>
@@ -71,7 +70,7 @@
         serverSide: true,
         ajax: "/rujukan",
         columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			//{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'kategori_', name: 'kategori_'},
 			{data: 'nama', name: 'nama'},
 			{data: 'link', name: 'link'},

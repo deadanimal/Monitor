@@ -29,7 +29,6 @@
 									<table class="table table-striped table-sm pengguna-datatable">
 											<thead>
 												<tr>
-													<th>No</th>
 													<th>Nama</th>
 													<th>Email</th>
 													<th>Organisasi</th>
@@ -71,7 +70,7 @@
         serverSide: true,
         ajax: "/pengguna",
         columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			//{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'name', name: 'nama'},
             {data: 'email', name: 'email'},
 			{data: 'organisasi', name: 'organisasi'},

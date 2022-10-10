@@ -24,12 +24,13 @@
 									<h5 class="card-title">Senarai Aktiviti</h5>
 								</div>
 
+								<div class="card-body">
+									
 								
 
-									<table class="table table-striped table-sm">
+									<table class="table table-striped table-sm activity-datatable">
 										<thead>
 											<tr>
-													<th>No</th>
 													<th>Pelanggan</th>
 													<th>Projek</th>
 													<th>Nama</th>
@@ -39,25 +40,11 @@
                                                     <th></th>
 											</tr>
 										</thead>
-										<tbody>
-											@foreach ($acts as $act)
-											<tr>
-													<td>{{$act->id}}</td>
-													<td>{{$act->organisasi->simbol}}</td>
-													<td>{{$act->projek->nama}}</td>
-													<td>{{$act->nama}}</td>
-                                                    <td><span class="badge rounded-pill bg-primary">{{$act->kategori}}</span></td>
-                                                    <td><span class="badge rounded-pill bg-primary">{{$act->status}}</span></td>
-                                                    <td>{{$act->tarikh_rancang}}</td>
-                                                    <td>
-														<a href="/projek/{{$act->projek->id}}/activity/{{ $act->id }}"><button class="btn btn-primary">Lihat</button></a>
-													</td>
-											</tr>
-											@endforeach
-											
+										<tbody>																					
 										</tbody>
 									</table>	
 											
+								</div>
 												
 								
 							</div>
@@ -78,11 +65,10 @@
 								</div>
 
 								
-
-									<table class="table table-striped table-sm">
+								<div class="card-body">
+									<table class="table table-striped table-sm deliverable-datatable">
 										<thead>
 											<tr>
-													<th>No</th>
 													<th>Pelanggan</th>
 													<th>Projek</th>
 													<th>Nama</th>
@@ -93,24 +79,10 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($delis as $deli)
-											<tr>
-													<td>{{$deli->id}}</td>
-													<td>{{$deli->organisasi->simbol}}</td>
-													<td>{{$deli->projek->nama}}</td>
-													<td>{{$deli->nama}}</td>
-                                                    <td><span class="badge rounded-pill bg-primary">{{$deli->kategori}}</span></td>
-                                                    <td><span class="badge rounded-pill bg-primary">{{$deli->status}}</span></td>
-                                                    <td>{{$deli->tarikh_rancang}}</td>
-                                                    <td>
-														<a href="/projek/{{$deli->projek->id}}/deliverable/{{ $deli->id }}"><button class="btn btn-primary">Lihat</button></a>													
-													</td>
-											</tr>
-											@endforeach
 											
 										</tbody>
 									</table>	
-											
+								</div>	
 												
 								
 							</div>
@@ -133,5 +105,50 @@
 
 @section('script')
 
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.activity-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/pengguna/{{$user->id}}/activity",
+        columns: [	
+            {data: 'pelanggan', name: 'pelanggan'},
+            {data: 'projek', name: 'projek'},
+            {data: 'nama', name: 'nama'},			
+            {data: 'kategori', name: 'kategori'},
+            {data: 'status_', name: 'status_'},            
+            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
+			{data: 'link', name: 'link'},
+        ]
+    });
+
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.deliverable-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/pengguna/{{$user->id}}/deliverable",
+        columns: [	
+            {data: 'pelanggan', name: 'pelanggan'},
+            {data: 'projek', name: 'projek'},
+            {data: 'nama', name: 'nama'},			
+            {data: 'kategori', name: 'kategori'},
+            {data: 'status_', name: 'status_'},            
+            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
+			{data: 'link', name: 'link'},
+        ]
+    });
+
+
+  });
+</script>
 
 @endsection

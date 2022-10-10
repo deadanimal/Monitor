@@ -35,7 +35,7 @@
 			</div>
 
             <div class="row">
-                <div class="col-xl-4">
+                <div class="col-xl-6">
                                     <div class="card">
 										<div class="card-header">
 											<h5 class="card-title mb-0">Maklumat</h5>
@@ -48,18 +48,7 @@
 										</div>
 									</div>	                    
                 </div>
-                <div class="col-xl-8">
-                                    <div class="card">
-										<div class="card-header">
-											<h5 class="card-title mb-0">Kalendar</h5>
-										</div>
-										<div class="card-body">
-
-                                        
-
-										</div>
-									</div>	                    
-                </div>                
+                             
             </div>
 
             <div class="row">
@@ -77,11 +66,11 @@
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#deliverable" role="tab">
 										Hasil
 									</a>  
-                                    @role(['client-finance','client-pmo','client-end-user','admin','pmo','finance'])
+                                    <!-- @role(['client-finance','client-pmo','client-end-user','admin','pmo','finance'])
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#invoice" role="tab">
 										Inbois
 									</a>
-                                    @endrole
+                                    @endrole -->
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#dokumen" role="tab">
 										Dokumen
 									</a>                                                                       
@@ -93,10 +82,11 @@
 									</a>                                                                          
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#ralat" role="tab">
 										Ralat
-									</a>        
+									</a>  
+									<!--      
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#masalah" role="tab">
 										Masalah
-									</a>                                                                                                                                         
+									</a>                                                                                                                                          -->
 
 								</div>
 							</div>
@@ -114,7 +104,6 @@
 									<table class="table table-striped table-sm activity-datatable mb-5">
 											<thead>
 												<tr>
-													<th>No</th>
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Status</th>
@@ -197,7 +186,6 @@
 									<table class="table table-striped table-sm deliverable-datatable mb-5">
 											<thead>
 												<tr>
-													<th>No</th>
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Status</th>
@@ -302,8 +290,9 @@
 									<table class="table table-striped table-sm dokumen-datatable">
 											<thead>
 												<tr>
-													<th>No</th>
+													<th>Tarikh</th>
 													<th>Nama</th>
+													<th>Versi</th>
                                                     <th></th>
 												</tr>
 											</thead>
@@ -342,18 +331,81 @@
 
 
 
-								<div class="tab-pane fade" id="nota" role="tabpanel">
+								<div class="tab-pane fade active" id="nota" role="tabpanel">
 
-                                    <div class="card">
-										<div class="card-header">
-											<h5 class="card-title mb-0">Nota</h5>
+								<table class="table table-striped table-sm nota-datatable">
+											<thead>
+												<tr>
+													<th>Tarikh</th>
+													<th>Nama</th>
+                                                    <th></th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+									    </table>								
+
+									<div class="row">
+
+
+										<div class="col-xl-12">
+
+												<div class="card">
+														<div class="card-header">
+															<h5 class="card-title">Output</h5>                                 
+														</div>
+
+														<div class="card-body" id="html-output">
+															
+														</div>
+
+														
+												</div>
+													
+													
 										</div>
-										<div class="card-body">
 
-                                        
+										<div class="col-xl-12">
 
-										</div>
-									</div>
+											<div class="card">
+
+
+													<div class="card-body">
+
+														<form action="/projek/{{$projek->id}}/nota" method="POST">
+															@csrf
+
+															<div class="mb-3">
+																<label class="form-label">Nama</label>
+																<input class="form-control" type="text" name="nama">
+															</div>                           
+
+															<div class="row">
+																<div class="col">
+																	<div class="textwrapper">
+																		<textarea id="markdown-input" 
+																			name="deskripsi"
+																			class="form-control mb-3"
+																			cols="2" 
+																			rows="10" 
+																			id="rules" 
+																			onkeyup="scriptRan()"
+																			style="width:100%;"></textarea>
+																	</div>                                            
+																</div>
+															</div>	
+															
+															<button class="btn btn-primary">Simpan</button>
+														</form>
+													</div>
+
+														
+											</div>
+																				
+										</div>                    											
+
+
+									</div>									
 
 								</div> 
                                 
@@ -363,17 +415,50 @@
 
 								<div class="tab-pane fade" id="perubahan" role="tabpanel">
 
-                                    <div class="card">
+
+								<div class="card">
 										<div class="card-header">
-											<h5 class="card-title mb-0">Perubahan</h5>
+											<h5 class="card-title mb-0">Cipta Perubahan</h5>
 										</div>
 										<div class="card-body">
 
+                                        <form action='/projek/{{ $projek->id}}/perubahan' method="POST">
+                                            @csrf
+
+                                            <div class="row">
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Nama</label>
+                                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Hasil">
+                                                </div>
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Kategori</label>
+                                                    <select class="form-control mb-3" id="kategori" name="kategori">
+                                                        <option value="DOKUMEN">Dokumen</option>
+                                                        <option value="SISTEM">Aplikasi & Sistem</option>
+                                                        <option value="LAIN">Lain-lain</option>
+                                                    </select>                                                       
+                                                </div>
+                                                                                                 
+                                                <div class="mb-3 col-md-12">
+                                                    <label>Deskripsi</label>
+                                                    <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deksripsi untuk aktiviti" rows="3"></textarea>
+                                                </div>                                                   
+                                                
+                                                
+                                            </div>    
+                                        
+                                            <button type="submit" class="btn btn-primary">Cipta</button>
+
+                                        </form>
                                         
 
 										</div>
-									</div>
+									</div>	
 
+
+
+
+                                 
 								</div>
 
 
@@ -440,8 +525,7 @@
         serverSide: true,
         responsive: true,
         ajax: "/projek/{{$projek->id}}/activity",
-        columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+        columns: [	
             {data: 'nama', name: 'nama'},
             {data: 'kategori', name: 'kategori'},
             {data: 'status', name: 'status'},
@@ -462,8 +546,7 @@
         serverSide: true,
         responsive: true,
         ajax: "/projek/{{$projek->id}}/deliverable",
-        columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+        columns: [	
             {data: 'nama', name: 'nama'},
             {data: 'kategori', name: 'kategori'},
             {data: 'status', name: 'status'},
@@ -486,7 +569,41 @@
         responsive: true,
         ajax: "/projek/{{$projek->id}}/dokumen",
         columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			{data: 'created_at', name: 'created_at'},			
+            {data: 'nama', name: 'nama'},
+			{data: 'nama', name: 'versi'},
+            {data: 'link', name: 'link'},
+        ]
+    });
+
+
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+<script type="text/javascript">
+
+
+
+    function scriptRan() {
+        var converter = new showdown.Converter(),
+            text      = document.getElementById("markdown-input").value,
+            html      = converter.makeHtml(text);
+        document.getElementById('html-output').innerHTML = html;
+    }
+
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.nota-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/projek/{{$projek->id}}/nota",
+        columns: [
+			{data: 'created_at', name: 'created_at'},			
             {data: 'nama', name: 'nama'},
             {data: 'link', name: 'link'},
         ]

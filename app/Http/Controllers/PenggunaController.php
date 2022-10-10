@@ -127,7 +127,7 @@ class PenggunaController extends Controller
     public function satu_pengguna(Request $request) {
 
         $id = $request->route('id');
-        $user = user::find($id);  
+        $user = User::find($id);  
   
         return view('pengguna.satu', compact('user'));
     }    
@@ -138,7 +138,7 @@ class PenggunaController extends Controller
         $notis = Notifikasi::all();
 
         return view('dashboard.admin', compact([
-            'acts', 'delis', 'notis'
+            'user','acts', 'delis', 'notis'
         ]));
     }
 
@@ -170,9 +170,20 @@ class PenggunaController extends Controller
 
 
         return view('dashboard.staff', compact([
-            'acts', 'delis', 'notis'
+            'user','acts', 'delis', 'notis'
         ]));
-    }    
+    }   
+    
+    public function ubah_password(Request $req) {
+        $user = $req->user();
+        $req->validate([
+            'password' => ['required', 'string', 'max:24'],
+        ]);
+        $user->password = Hash::make($req->password);
+        $user->save();     
+        toast('Kata laluan diubah!','success');
+        return back();   
+    }
 
 
 }

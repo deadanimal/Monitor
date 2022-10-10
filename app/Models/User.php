@@ -72,5 +72,10 @@ class User extends Authenticatable
     public function dokumens()
     {
         return $this->hasMany(Dokumen::class, 'user_id')->latest();
-    }    
+    }  
+    
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }          
 }

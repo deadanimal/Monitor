@@ -24,4 +24,9 @@ class Projek extends Model
         return $this->hasMany(Deliverable::class);
     }  
 
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }      
+
 }

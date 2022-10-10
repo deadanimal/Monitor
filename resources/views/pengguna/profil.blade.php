@@ -19,17 +19,17 @@
 
 				<div class="col-xl-4">
 					<div class="card flex-fill w-100">
-						<div class="card-header">
+						<!-- <div class="card-header">
 							<div class="card-actions float-end">
 								
 							</div>
 							<h5 class="card-title mb-0">---</h5>
-						</div>
+						</div> -->
 						<div class="card-body py-3">
 
-						{{$user->name}} <br>
-						{{$user->email}} <br>
-						{{$user->organisasi->nama}} <br>
+						<b>Nama:</b> {{$user->name}} <br>
+						<b>Email:</b> {{$user->email}} <br>
+						<b>Organisasi:</b> {{$user->organisasi->nama}} <br>
 
          
 
@@ -40,26 +40,19 @@
 				<div class="col-xl-4">
 					<div class="card flex-fill w-100">
 						<div class="card-header">
-							<div class="card-actions float-end">
-								
-							</div>
-							<h5 class="card-title mb-0">---</h5>
+					
+							<h5 class="card-title mb-0">Ubah Kata Laluan</h5>
 						</div>
 						<div class="card-body py-3">
 
 
-                            <form action="/change-password" method="POST">
+                            <form action="/profil/ubah-password" method="POST">
                                 @csrf       
                                 <div class="mb-3">
-                                    <label class="form-label">Password</label>
+                                    <label class="form-label">Kata Laluan</label>
                                     <input class="form-control" type="password" name="password">
-                                </div>   
-                                <div class="mb-3">
-                                    <label class="form-label">Confirm Password</label>
-                                    <input class="form-control" type="password" name="confirm_password">                                 
-                                </div>                                 
-                                   
-                                <button type="submit" class="btn btn-primary">Ubah Password</button>
+                                </div>                                                                      
+                                <button type="submit" class="btn btn-primary">Ubah Kata Laluan</button>
                             </form>
 
 						</div>
@@ -68,7 +61,11 @@
 
             </div>
 
-            <div class="row">
+
+
+
+
+            <!-- <div class="row">
 
                 <div class="col-xl-12">
 
@@ -86,6 +83,9 @@
 
 			</div>	
 			
+
+
+
 			
             <div class="row">
 
@@ -103,7 +103,7 @@
                 </div>
 
 
-			</div>				
+			</div>				 -->
 			
 
 			

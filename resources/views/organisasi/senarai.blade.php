@@ -30,7 +30,6 @@
 									<table class="table table-striped table-sm organisasi-datatable">
 										<thead>
 											<tr>
-												<th>No</th>
 												<th>Nama</th>
 												<th>Simbol</th>
 												<th></th>
@@ -70,7 +69,7 @@
         serverSide: true,
         ajax: "/organisasi",
         columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+			//{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
             {data: 'nama', name: 'nama'},
             {data: 'simbol', name: 'simbol'},
 			{data: 'link', name: 'link'},

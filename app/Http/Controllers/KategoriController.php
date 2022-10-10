@@ -32,7 +32,9 @@ class KategoriController extends Controller
     }
 
     public function satu_kategori(Request $request) {
-
+        $id = (int)$request->route('id');
+        $cat = Kategori::find($id);
+        return view('kategori.satu', compact('cat'));  
     }
 
     public function cipta_kategori(Request $request) {

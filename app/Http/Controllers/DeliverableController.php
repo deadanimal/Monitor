@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DataTables;
+use DateTime;
 
 use Illuminate\Http\Request;
 
@@ -24,6 +25,31 @@ class DeliverableController extends Controller
             })                            
             ->make(true);        
     }
+
+    public function senarai_deliverable_pengguna(Request $request) {
+
+        $deliverables = Deliverable::where('pekerja_id', $request->user()->id)->get();
+
+        return Datatables::collection($deliverables)
+            ->addIndexColumn()     
+            ->addColumn('pelanggan', function (Deliverable $deliverable) {
+                return $deliverable->organisasi->nama;
+            })    
+            ->addColumn('projek', function (Deliverable $deliverable) {
+                return $deliverable->projek->nama;
+            })          
+            ->addColumn('status_', function (Deliverable $deliverable) {
+                $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($deliverable->status).'</span>';
+                return $html_badge;
+            })        
+            ->addColumn('link', function (Deliverable $deliverable) {
+                $url = '/projek/'.$deliverable->projek_id.'/deliverable/'.$deliverable->id;
+                $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                return $html_button;
+            })         
+            ->rawColumns(['status_','link'])                     
+            ->make(true);        
+    }       
 
     public function cipta_deliverable(Request $request) {
         
@@ -50,13 +76,45 @@ class DeliverableController extends Controller
         return back();
     }
 
-    public function senarai() {}
+    public function satu_deliverable(Request $request) {
+        $projek_id = (int)$request->route('projek_id');
+        $id = (int)$request->route('id');
+        
+        $projek = Projek::find($projek_id);        
+        $deli = Deliverable::find($id);
 
-    public function satu() {}
+        return view('deliverable.satu', compact('deli', 'projek'));
+    }
 
-    public function cipta() {}
+    public function kemaskini_deliverable(Request $req) {
+        $projek_id = (int)$req->route('projek_id');
+        $id = (int)$req->route('id');
+        $user_id = $req->user()->id;
+        
+        $projek = Projek::find($projek_id);        
+        $deli = Deliverable::find($id);
 
-    public function ubah() {}
 
-    public function gugur() {}
+        if ($user_id == $deli->pekerja_id) {
+            if($req->jenis == 'OK') {
+                $deli->deskripsi_ok = $req->deskripsi;
+                $deli->status = 'SIAP';          
+            } else if($req->jenis == 'KO') {
+                $deli->deskripsi_ko = $req->deskripsi;
+                $deli->status = 'TIDAK SIAP';
+            }             
+        }    
+
+        if ($req->jenis == 'SAH' and $user_id == $deli->supervisor_id) {
+            $deli->deskripsi_sah = $req->deskripsi;
+            $deli->status = 'SAH';      
+            $deli->tarikh_siap = new DateTime();      
+        }
+        
+        $deli->save();
+
+        toast('Hasil dikemaskini!','success');
+        return back();
+    }     
+
 }

@@ -27,5 +27,10 @@ class Organisasi extends Model
     public function deliverables()
     {
         return $this->hasMany(Deliverable::class);
-    }      
+    }   
+    
+    public function notas()
+    {
+        return $this->hasMany(Nota::class);
+    }          
 }

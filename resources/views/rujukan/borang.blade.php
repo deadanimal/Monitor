@@ -22,25 +22,25 @@
                     <div class="card">
 	
 
-								<div class="card-body">
+							<div class="card-body">
 
                                 <form action="/rujukan" method="POST">
                                     @csrf
 
-                                <div class="mb-3">
-                                    <label class="form-label">Nama</label>
-                                    <input class="form-control" type="text" name="nama">
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nama</label>
+                                        <input class="form-control" type="text" name="nama">
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Kategori</label>
-                                    <select class="form-control mb-3" name="kategori">
-                                        <option value="ANALISA">Analisa</option>
-                                        <option value="PEMBANGUNAN">Pembangunan</option>
-                                        <option value="PENGUJIAN">Pengujian</option>
-                                        <option value="LAIN">Lain</option>
-									</select>                                    
-                                </div>                                
+                                    <div class="mb-3">
+                                        <label class="form-label">Kategori</label>
+                                        <select class="form-control mb-3" name="kategori">
+                                            <option value="ANALISA">Analisa</option>
+                                            <option value="PEMBANGUNAN">Pembangunan</option>
+                                            <option value="PENGUJIAN">Pengujian</option>
+                                            <option value="LAIN">Lain</option>
+                                        </select>                                    
+                                    </div>                                
 
                                     <div class="row">
                                         <div class="col">
@@ -58,20 +58,20 @@
                                     </div>	
                                     
                                     <button class="btn btn-primary">Simpan</button>
-                                    </form>
-								</div>
+                                </form>
+							</div>
 
 								
-							</div>
+					</div>
                                                         
-                    </div>                    
+                </div>                    
 
 
 				            
 
                 <div class="col-xl-6">
 
-                    <div class="card">
+                        <div class="card">
 								<div class="card-header">
 									<h5 class="card-title">Output</h5>                                 
 								</div>
@@ -81,13 +81,13 @@
 								</div>
 
 								
-							</div>
+						</div>
                             
                             
-                    </div>
+                </div>
 
 
-			    </div>		
+			</div>		
 			
 
 			

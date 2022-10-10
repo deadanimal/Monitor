@@ -30,6 +30,7 @@ class OrganisasiController extends Controller
 
 
     public function satu_organisasi(Request $request) {
+        $id = (int)$request->route('id');
         $org = Organisasi::find($id);
         return view('organisasi.satu', compact('org'));        
     }
