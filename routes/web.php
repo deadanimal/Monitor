@@ -124,6 +124,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tender', [TenderController::class, 'senarai_tender'])->name('tender.senarai');
     Route::get('tender/{id}', [TenderController::class, 'satu_tender']);    
 
+    Route::get('kewangan', [TenderController::class, 'senarai_tender'])->name('tender.senarai');
+    Route::get('sumber-manusia', [TenderController::class, 'senarai_tender'])->name('tender.senarai');
+
     # User Specific
     Route::get('pengguna/{id}/activity', [ActivityController::class, 'senarai_activity_pengguna']);
     Route::get('pengguna/{id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
