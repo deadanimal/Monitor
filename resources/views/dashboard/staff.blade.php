@@ -12,7 +12,6 @@
 				<h1 class="header-title">
 					Dashboard
 				</h1>
-				<p class="header-subtitle"><b>{{ auth()->user()->name }}</b> (@foreach (auth()->user()->roles as $role){{ $role->display_name }}@endforeach)</p>
 			</div>
 
 			<div class="row">

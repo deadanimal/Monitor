@@ -1,6 +1,8 @@
 @extends('layouts.app')
  
-
+@section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+@endsection
  
 @section('content')
 
@@ -14,6 +16,16 @@
 				</h1>
 			</div>
 
+
+            <div class="row col">
+
+                <div class="container mt-5" style="max-width: 700px">
+                    <div id='full_calendar_events'></div>
+                </div>
+
+            </div>
+            
+            
 			<div class="row">
 
 				<div class="col-xl-3">
@@ -248,7 +260,6 @@
 
 @section('script')
 
-
 <script type="text/javascript">
 	function changeProjek() {
 		var e = document.getElementById("projekId").value.toString();
@@ -300,5 +311,6 @@
 
   });
 </script>
+
 
 @endsection

@@ -20,7 +20,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>		
-
+	@yield('styles')
 </head>
 
 <body>
@@ -39,13 +39,17 @@
 						<a class="sidebar-link" href="/">
 							<span class="align-middle">Dashboard</span>
 						</a>
-					</li>				
+					</li>		
+					
+					@role('admin|pmo|analyst|developer')  
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/projek">
 							<span class="align-middle">Projek</span>
 						</a>
 					</li>	
+
+					@endrole
 					
 					
 					<!-- <li class="sidebar-item">
@@ -75,6 +79,36 @@
                             </a>
                         </li> 								
                     							
+ 
+                    @endrole 	
+					
+                    @role('admin|business')    
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/tender">
+                                <span class="align-middle">Tender</span>
+                            </a>
+                        </li> 													                    							
+ 
+                    @endrole 	
+					
+                    @role('admin|finance')    
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/kewangan">
+                                <span class="align-middle">Kewangan</span>
+                            </a>
+                        </li> 													                    							
+ 
+                    @endrole 	
+					
+                    @role('admin|sumber-manusia')    
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/sumber-manusia">
+                                <span class="align-middle">Sumber Manusia</span>
+                            </a>
+                        </li> 													                    							
  
                     @endrole 					
 						

@@ -12,7 +12,6 @@
 				<h1 class="header-title">
 					Kategori
 				</h1>
-				<p class="header-subtitle">- - -</p>
 			</div>
 
 			<div class="row">

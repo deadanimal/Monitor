@@ -13,6 +13,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DeliverableController;
 use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\DokumenController;
+use App\Http\Controllers\TenderController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -65,8 +66,7 @@ Route::middleware(['auth'])->group(function () {
         
         Route::get('jadual-staff/{id}', [PenggunaController::class, 'jadual_staff']);
         Route::get('jadual-projek/{id}', [PenggunaController::class, 'jadual_projek']);
-        
-        
+           
     });      
 
 
@@ -119,7 +119,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projek/{projek_id}/masalah/{id}', [MasalahController::class, 'satu_masalah']);
     Route::post('projek/{projek_id}/masalah/{id}/terima', [MasalahController::class, 'terima_masalah']);
     Route::post('projek/{projek_id}/masalah/{id}/siap', [MasalahController::class, 'siap_masalah']);
-    Route::post('projek/{projek_id}/masalah/{id}/sah', [MasalahController::class, 'sah_masalah']);    
+    Route::post('projek/{projek_id}/masalah/{id}/sah', [MasalahController::class, 'sah_masalah']);  
+    
+    Route::get('tender', [TenderController::class, 'senarai_tender'])->name('tender.senarai');
+    Route::get('tender/{id}', [TenderController::class, 'satu_tender']);    
 
     # User Specific
     Route::get('pengguna/{id}/activity', [ActivityController::class, 'senarai_activity_pengguna']);
