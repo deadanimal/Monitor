@@ -12,6 +12,7 @@ use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\DeliverableController;
 use App\Http\Controllers\RujukanController;
+use App\Http\Controllers\DokumenController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -108,7 +109,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('projek/{projek_id}/dokumen', [DokumenController::class, 'senarai_dokumen']);
     Route::post('projek/{projek_id}/dokumen', [DokumenController::class, 'cipta_dokumen']);
     Route::get('projek/{projek_id}/dokumen/{id}', [DokumenController::class, 'satu_dokumen']);
-    Route::get('projek/{projek_id}/dokumen/{id}/muatnaik', [DokumenController::class, 'muatnaik_dokumen']);
     Route::put('projek/{projek_id}/dokumen/{id}', [DokumenController::class, 'ubah_dokumen']);     
     
     Route::get('projek/{projek_id}/invoice', [InvoiceController::class, 'senarai_invoice']);     

@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('dokumens', function (Blueprint $table) {
+            $table->string('nama');
+            $table->string('path');
+            $table->double('size', 8, 2)->default(0);
+            $table->unsignedInteger('user_id')->nullable();            
+            $table->foreignId('projek_id')->nullable()->constrained('projeks')->cascadeOnDelete();
+            $table->foreignId('organisasi_id')->nullable()->constrained('organisasis')->cascadeOnDelete();            
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+};

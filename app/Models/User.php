@@ -67,5 +67,10 @@ class User extends Authenticatable
     public function deliverable_supervisor()
     {
         return $this->hasMany(Deliverable::class, 'supervisor_id');
-    }       
+    } 
+    
+    public function dokumens()
+    {
+        return $this->hasMany(Dokumen::class, 'user_id')->latest();
+    }    
 }

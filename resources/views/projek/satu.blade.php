@@ -71,30 +71,30 @@
 								</div>
 
 								<div class="list-group list-group-flush" role="tablist">
-									<a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#aktiviti" role="tab" aria-selected="true">
+									<a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#aktiviti" role="tab">
 										Aktiviti
 									</a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#deliverable" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#deliverable" role="tab">
 										Hasil
 									</a>  
                                     @role(['client-finance','client-pmo','client-end-user','admin','pmo','finance'])
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#invoice" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#invoice" role="tab">
 										Inbois
 									</a>
                                     @endrole
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#dokumen" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#dokumen" role="tab">
 										Dokumen
 									</a>                                                                       
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#nota" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#nota" role="tab">
 										Nota
 									</a>                                        
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#perubahan" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#perubahan" role="tab">
 										Perubahan
 									</a>                                                                          
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#ralat" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#ralat" role="tab">
 										Ralat
 									</a>        
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#masalah" role="tab" aria-selected="false">
+									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#masalah" role="tab">
 										Masalah
 									</a>                                                                                                                                         
 
@@ -111,13 +111,7 @@
 
 								<div class="tab-pane fade active show" id="aktiviti" role="tabpanel">
 
-									<div class="card">
-										<div class="card-header">
-											<h5 class="card-title mb-0">Aktiviti</h5>
-										</div>
-										<div class="card-body">
-
-                                        <table class="table table-striped table-sm activity-datatable">
+									<table class="table table-striped table-sm activity-datatable mb-5">
 											<thead>
 												<tr>
 													<th>No</th>
@@ -130,10 +124,7 @@
 											</thead>
 											<tbody>
 											</tbody>
-									    </table>	                                        
-
-										</div>
-									</div>		
+									    </table>		
                                     
 									<div class="card">
 										<div class="card-header">
@@ -203,13 +194,7 @@
 								<div class="tab-pane fade active" id="deliverable" role="tabpanel">
 
 
-                                    <div class="card">
-										<div class="card-header">
-											<h5 class="card-title mb-0">Hasil</h5>
-										</div>
-										<div class="card-body">
-
-                                        <table class="table table-striped table-sm deliverable-datatable">
+									<table class="table table-striped table-sm deliverable-datatable mb-5">
 											<thead>
 												<tr>
 													<th>No</th>
@@ -223,10 +208,7 @@
 											</thead>
 											<tbody>
 											</tbody>
-									    </table>	                                        
-
-										</div>
-									</div>		
+									    </table>	
                                     
 									<div class="card">
 										<div class="card-header">
@@ -314,22 +296,49 @@
 
 
 
-								<div class="tab-pane fade" id="dokumen" role="tabpanel">
+								<div class="tab-pane fade active" id="dokumen" role="tabpanel">
+
+
+									<table class="table table-striped table-sm dokumen-datatable">
+											<thead>
+												<tr>
+													<th>No</th>
+													<th>Nama</th>
+                                                    <th></th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+									    </table>								
 
                                     <div class="card">
 										<div class="card-header">
 											<h5 class="card-title mb-0">Dokumen</h5>
 										</div>
-										<div class="card-body">
+										<div class="card-body">                                
 
-                                        
+											<form action="/projek/{{$projek->id}}/dokumen" enctype="multipart/form-data" method="POST">
+												@csrf
+												<div class="form-group mb-3">
+													<input type="file" name="upload" id="upload">
+												</div>
+												<div class="form-group mb-3">
+													<label for="title">Nama</label>
+													<input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Dokumen" required>
+
+												</div>
+												<button class="btn btn-primary">Upload</button>
+											</form>    										
+
 
 										</div>
 									</div>
 
 								</div>   
                                 
-                                
+                             
+								
+
 
 
 
@@ -461,6 +470,25 @@
             {data: 'tarikh_rancang', name: 'tarikh_rancang'},
             {data: 'pelaksana', name: 'pelaksana'},
             {data: 'nama', name: 'nama'},
+        ]
+    });
+
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.dokumen-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/projek/{{$projek->id}}/dokumen",
+        columns: [
+			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+            {data: 'nama', name: 'nama'},
+            {data: 'link', name: 'link'},
         ]
     });
 
