@@ -10,52 +10,11 @@
 
 			<div class="header">
 				<h1 class="header-title">
-                    Kategori
+                    {{$cat->nama}}
 				</h1>
-				<p class="header-subtitle">{{$cat->nama}}</p>
 			</div>
 
-			<div class="row">
-
-                <div class="col-xl-6">
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Maklumat</h5>
-                                    </div>
-
-                                    <div class="card-body">
-                                        
-                                        {{$cat}} 
-
-                                        <table class="table table-striped table-sm activity-datatable">
-                                            <thead>
-                                                <tr>
-                                                        <th>Pelanggan</th>
-                                                        <th>Projek</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>																					
-                                            </tbody>
-                                        </table>	
-                                                
-                                    </div>
-                                                    
-                                    
-                                </div>
-                                
-                                
-                </div>
-
-                <div class="col-xl-6">
-
-                        
-                                
-                                
-                </div>                
-
-
-			</div>		
+		
 				
 			
 

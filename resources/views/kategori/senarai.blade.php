@@ -31,7 +31,6 @@
 									<table class="table table-striped table-sm kategori-datatable">
 										<thead>
 											<tr>
-												<th>No</th>
 												<th>Nama</th>
                                                 <th></th>
 											</tr>
@@ -70,8 +69,7 @@
         serverSide: true,
         responsive: true,
         ajax: "{{ route('kategori.senarai') }}",
-        columns: [
-			{data: 'DT_RowIndex', name: 'DT_RowIndex'},			
+        columns: [	
             {data: 'nama', name: 'nama'},
             {data: 'link', name: 'link'},
         ]

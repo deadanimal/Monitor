@@ -23,7 +23,7 @@ class PenggunaController extends Controller
         $user_id = $user->id;
 
 
-        if ($user->hasRole(['analyst', 'developer', 'pmo', 'business', 'finance'])) {
+        if ($user->hasRole(['analyst', 'developer'])) {
             return $this->show_staff_dashboard($user);
         } else if ($user->hasRole(['client-finance', 'client-end-user', 'client-pmo'])) {
             return $this->show_client_dashboard($user);
@@ -142,31 +142,29 @@ class PenggunaController extends Controller
         ]));
     }
 
+    public function show_client_dashboard($user) {
+        $acts = Activity::all();
+        $delis = Deliverable::all();
+        $notis = Notifikasi::all();
+
+        return view('dashboard.admin', compact([
+            'user','acts', 'delis', 'notis'
+        ]));
+    }    
+
     public function show_staff_dashboard($user) {
 
-        if ($user->hasRole(['pmo'])) {
-            $acts = Activity::where([
-                ['status','=', 'CIPTA']
-            ])->get();
-            $delis = Deliverable::where([
-                ['status','=', 'CIPTA']
-            ])->get();
-            $notis = Notifikasi::where([
-                ['user_id','=', $user->id]
-            ])->get();
-        } else {
-            $acts = Activity::where([
-                ['pekerja','=', $user->id],
-                ['status','=', 'CIPTA']
-            ])->get();
-            $delis = Deliverable::where([
-                ['pekerja','=', $user->id],
-                ['status','=', 'CIPTA']
-            ])->get();
-            $notis = Notifikasi::where([
-                ['user_id','=', $user->id]
-            ])->get();
-        }
+
+        $acts = Activity::where([
+            ['pekerja_id','=', $user->id]
+        ])->get();
+        $delis = Deliverable::where([
+            ['pekerja_id','=', $user->id]
+        ])->get();
+        $notis = Notifikasi::where([
+            ['user_id','=', $user->id]
+        ])->get();
+ 
 
 
         return view('dashboard.staff', compact([

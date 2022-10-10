@@ -22,7 +22,17 @@ class DeliverableController extends Controller
             ->addIndexColumn()
             ->addColumn('pelaksana', function (Deliverable $deliverable) {
                 return $deliverable->pekerja->name;
-            })                            
+            })          
+            ->addColumn('status_', function (Deliverable $deliverable) {
+                $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($deliverable->status).'</span>';
+                return $html_badge;
+            })        
+            ->addColumn('link', function (Deliverable $deliverable) {
+                $url = '/projek/'.$deliverable->projek_id.'/deliverable/'.$deliverable->id;
+                $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                return $html_button;
+            })     
+            ->rawColumns(['status_','link'])                                  
             ->make(true);        
     }
 

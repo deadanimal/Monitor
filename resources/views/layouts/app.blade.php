@@ -53,12 +53,13 @@
 							<span class="align-middle">Nota</span>
 						</a>
 					</li>	 -->
-					
+					@if (auth()->user()->organisasi_id == 1)
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/rujukan">
 							<span class="align-middle">Rujukan</span>
 						</a>
-					</li>					
+					</li>	
+					@endif				
 						
 						
 
@@ -70,7 +71,7 @@
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/borang-admin">
-                                <span class="align-middle">OSC Borang</span>
+                                <span class="align-middle">Borang</span>
                             </a>
                         </li> 						
                         

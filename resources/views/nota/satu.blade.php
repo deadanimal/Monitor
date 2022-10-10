@@ -41,6 +41,7 @@
                 
                 <div class="col-xl-12">
 
+                    @if (auth()->user()->id == $nota->user_id)
                     <div class="card">
 	
 
@@ -77,7 +78,8 @@
 								
 							</div>
                                                         
-                    </div>              
+                    </div>    
+                    @endif          
             
 			
 		</div>

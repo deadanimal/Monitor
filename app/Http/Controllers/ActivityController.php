@@ -30,13 +30,16 @@ class ActivityController extends Controller
             ->addColumn('pelaksana', function (Activity $activity) {
                 return $activity->pekerja->name;
             })               
-            // ->addColumn('role', function (User $user) {
-            //     $statement = '';
-            //     foreach ($user->roles as $role) {
-            //         $statement .= $role->display_name.' ';
-            //     }
-            //     return $statement;
-            // })                
+            ->addColumn('status_', function (Activity $activity) {
+                $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($activity->status).'</span>';
+                return $html_badge;
+            })        
+            ->addColumn('link', function (Activity $activity) {
+                $url = '/projek/'.$activity->projek_id.'/activity/'.$activity->id;
+                $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                return $html_button;
+            })     
+            ->rawColumns(['status_','link'])               
             ->make(true);        
     }
 

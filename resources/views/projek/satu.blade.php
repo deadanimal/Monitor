@@ -109,12 +109,14 @@
                                                     <th>Status</th>
                                                     <th>Tarikh</th>
                                                     <th>Pelaksana</th>
+													<th></th>
 												</tr>
 											</thead>
 											<tbody>
 											</tbody>
 									    </table>		
                                     
+									@role('admin|pmo')	
 									<div class="card">
 										<div class="card-header">
 											<h5 class="card-title mb-0">Cipta Aktiviti</h5>
@@ -173,7 +175,8 @@
                                         
 
 										</div>
-									</div>	                                    
+									</div>	 
+									@endrole                                   
 
 								</div>
 
@@ -198,6 +201,7 @@
 											</tbody>
 									    </table>	
                                     
+									@role('admin|pmo')										
 									<div class="card">
 										<div class="card-header">
 											<h5 class="card-title mb-0">Cipta Hasil</h5>
@@ -257,6 +261,7 @@
 
 										</div>
 									</div>	
+									@endrole
 
 
 								</div>
@@ -366,7 +371,7 @@
 										</div>
 
 										<div class="col-xl-12">
-
+											
 											<div class="card">
 
 
@@ -401,6 +406,7 @@
 
 														
 											</div>
+											
 																				
 										</div>                    											
 
@@ -531,6 +537,7 @@
             {data: 'status', name: 'status'},
             {data: 'tarikh_rancang', name: 'tarikh_rancang'},
             {data: 'pelaksana', name: 'pelaksana'},
+			{data: 'link', name: 'link'},
         ]
     });
 
@@ -552,7 +559,7 @@
             {data: 'status', name: 'status'},
             {data: 'tarikh_rancang', name: 'tarikh_rancang'},
             {data: 'pelaksana', name: 'pelaksana'},
-            {data: 'nama', name: 'nama'},
+            {data: 'link', name: 'link'},
         ]
     });
 
