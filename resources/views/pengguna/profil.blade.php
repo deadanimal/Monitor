@@ -18,6 +18,9 @@
 			<div class="row">
 
 				<div class="col-xl-4">
+
+
+
 					<div class="card flex-fill w-100">
 						<!-- <div class="card-header">
 							<div class="card-actions float-end">
@@ -35,9 +38,9 @@
 
 						</div>
 					</div>
-				</div>
 
-				<div class="col-xl-4">
+
+					
 					<div class="card flex-fill w-100">
 						<div class="card-header">
 					
@@ -56,8 +59,13 @@
                             </form>
 
 						</div>
-					</div>
-				</div>				
+					</div>	
+				
+					
+					
+				</div>
+
+			
 
             </div>
 
