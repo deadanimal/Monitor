@@ -10,13 +10,12 @@ use App\Models\Kategori;
 class KategoriController extends Controller
 {
     public function senarai_kategori(Request $request) {
-
-
+        
         $kategoris = Kategori::all();
 
         if ($request->ajax()) {
             return Datatables::collection($kategoris)
-                ->addIndexColumn()    
+                ->addIndexColumn()                    
                 ->addColumn('link', function (Kategori $kategori) {
                     $url = '/kategori/'.$kategori->id;
                     $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
