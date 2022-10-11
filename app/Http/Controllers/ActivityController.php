@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DataTables;
 use DateTime;
+use Carbon\Carbon;
 
 
 use Illuminate\Http\Request;
@@ -39,6 +40,12 @@ class ActivityController extends Controller
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
             })     
+            ->editColumn('tarikh_rancang', function (Activity $activity) {
+                return [
+                    'display' =>($activity->tarikh_rancang && $activity->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($activity->tarikh_rancang))->format('d F Y') : '',
+                    'timestamp' =>($activity->tarikh_rancang && $activity->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($activity->tarikh_rancang))->timestamp : ''
+                ];
+            })            
             ->rawColumns(['status_','link'])               
             ->make(true);        
     }
@@ -51,10 +58,10 @@ class ActivityController extends Controller
         return Datatables::collection($activities)
             ->addIndexColumn()      
             ->addColumn('pelanggan', function (Activity $activity) {
-                return $activity->organisasi->nama;
+                return $activity->organisasi->simbol;
             })    
             ->addColumn('projek', function (Activity $activity) {
-                return $activity->projek->nama;
+                return $activity->projek->simbol;
             })          
             ->addColumn('status_', function (Activity $activity) {
                 $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($activity->status).'</span>';
@@ -65,6 +72,12 @@ class ActivityController extends Controller
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
             })     
+            ->editColumn('tarikh_rancang', function (Activity $activity) {
+                return [
+                    'display' =>($activity->tarikh_rancang && $activity->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($activity->tarikh_rancang))->format('d F Y') : '',
+                    'timestamp' =>($activity->tarikh_rancang && $activity->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($activity->tarikh_rancang))->timestamp : ''
+                ];
+            })         
             ->rawColumns(['status_','link'])                                               
             ->make(true);        
     }    

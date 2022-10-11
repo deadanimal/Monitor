@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Nota;
 use App\Models\Projek;
 use DataTables;
+use Carbon\Carbon;
 
 class NotaController extends Controller
 {
@@ -24,7 +25,13 @@ class NotaController extends Controller
                 $url = '/projek/'.$nota->projek_id.'/nota/'.$nota->id;
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
-            })         
+            })     
+            ->editColumn('created_at', function (Nota $nota) {
+                return [
+                    'display' =>($nota->created_at && $nota->created_at != '0000-00-00 00:00:00') ? with(new Carbon($nota->created_at))->format('d F Y') : '',
+                    'timestamp' =>($nota->created_at && $nota->created_at != '0000-00-00 00:00:00') ? with(new Carbon($nota->created_at))->timestamp : ''
+                ];
+            })                   
             ->rawColumns(['pemilik','link'])                                 
             ->make(true);      
     }

@@ -55,11 +55,11 @@
 									<table class="table table-striped table-sm activity-datatable">
 										<thead>
 											<tr>
+                                                    <th>Tarikh</th>                                                
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Pelaksana</th>
                                                     <th>Status</th>
-                                                    <th>Tarikh</th>
                                                     <th></th>
 											</tr>
 										</thead>
@@ -92,11 +92,11 @@
 									<table class="table table-striped table-sm deliverable-datatable">
 										<thead>
 											<tr>
+                                                    <th>Tarikh</th>                                                
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Pelaksana</th>
                                                     <th>Status</th>
-                                                    <th>Tarikh</th>
                                                     <th></th>
 											</tr>
 										</thead>
@@ -275,13 +275,17 @@
         processing: true,
         serverSide: true,
         responsive: true,
+        order: [[0, 'asc']],
         ajax: "/projek/{{$projek->id}}/activity",
         columns: [	
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},            
             {data: 'nama', name: 'nama'},			
             {data: 'kategori', name: 'kategori'},
             {data: 'pelaksana', name: 'pelaksana'},
             {data: 'status_', name: 'status_'},            
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
 			{data: 'link', name: 'link'},
         ]
     });
@@ -297,13 +301,17 @@
         processing: true,
         serverSide: true,
         responsive: true,
+        order: [[0, 'asc']],
         ajax: "/projek/{{$projek->id}}/deliverable",
         columns: [	
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},            
             {data: 'nama', name: 'nama'},			
             {data: 'kategori', name: 'kategori'},
             {data: 'pelaksana', name: 'pelaksana'},
             {data: 'status_', name: 'status_'},            
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
 			{data: 'link', name: 'link'},
         ]
     });

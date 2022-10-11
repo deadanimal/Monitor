@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use DataTables;
 use DateTime;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 use App\Models\Deliverable;
@@ -32,6 +34,12 @@ class DeliverableController extends Controller
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
             })     
+            ->editColumn('tarikh_rancang', function (Deliverable $deliverable) {
+                return [
+                    'display' =>($deliverable->tarikh_rancang && $deliverable->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($deliverable->tarikh_rancang))->format('d F Y') : '',
+                    'timestamp' =>($deliverable->tarikh_rancang && $deliverable->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($deliverable->tarikh_rancang))->timestamp : ''
+                ];
+            })                 
             ->rawColumns(['status_','link'])                                  
             ->make(true);        
     }
@@ -44,10 +52,10 @@ class DeliverableController extends Controller
         return Datatables::collection($deliverables)
             ->addIndexColumn()     
             ->addColumn('pelanggan', function (Deliverable $deliverable) {
-                return $deliverable->organisasi->nama;
+                return $deliverable->organisasi->simbol;
             })    
             ->addColumn('projek', function (Deliverable $deliverable) {
-                return $deliverable->projek->nama;
+                return $deliverable->projek->simbol;
             })          
             ->addColumn('status_', function (Deliverable $deliverable) {
                 $html_badge = '<span class="badge rounded-pill bg-primary">'.ucfirst($deliverable->status).'</span>';
@@ -58,6 +66,12 @@ class DeliverableController extends Controller
                 $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
                 return $html_button;
             })         
+            ->editColumn('tarikh_rancang', function (Deliverable $deliverable) {
+                return [
+                    'display' =>($deliverable->tarikh_rancang && $deliverable->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($deliverable->tarikh_rancang))->format('d F Y') : '',
+                    'timestamp' =>($deliverable->tarikh_rancang && $deliverable->tarikh_rancang != '0000-00-00 00:00:00') ? with(new Carbon($deliverable->tarikh_rancang))->timestamp : ''
+                ];
+            })                 
             ->rawColumns(['status_','link'])                     
             ->make(true);        
     }       

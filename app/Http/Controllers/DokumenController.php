@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use File;
 use DataTables;
-
+use Carbon\Carbon;
 
 use App\Models\Dokumen;
 use App\Models\Projek;
@@ -31,7 +31,13 @@ class DokumenController extends Controller
                 $url = 'https://pipeline-apps.sgp1.digitaloceanspaces.com/'.$dokumen->path;
                 $html_button = '<a href="'.$url.'" target="_blank"><button class="btn btn-primary">Muat Turun</button></a>';
                 return $html_button;
-            })     
+            })   
+            ->editColumn('created_at', function (Dokumen $dokumen) {
+                return [
+                    'display' =>($dokumen->created_at && $dokumen->created_at != '0000-00-00 00:00:00') ? with(new Carbon($dokumen->created_at))->format('d F Y') : '',
+                    'timestamp' =>($dokumen->created_at && $dokumen->created_at != '0000-00-00 00:00:00') ? with(new Carbon($dokumen->created_at))->timestamp : ''
+                ];
+            })                    
             ->rawColumns(['pemilik','link'])                
             ->make(true);        
     }

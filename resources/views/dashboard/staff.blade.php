@@ -111,14 +111,18 @@
         processing: true,
         serverSide: true,
         responsive: true,
+		order: [[0, 'asc']],
         ajax: "/pengguna/{{$user->id}}/activity",
         columns: [	
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},			
             {data: 'pelanggan', name: 'pelanggan'},
             {data: 'projek', name: 'projek'},
             {data: 'nama', name: 'nama'},			
             {data: 'kategori', name: 'kategori'},
             {data: 'status_', name: 'status_'},            
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
 			{data: 'link', name: 'link'},
         ]
     });
@@ -134,14 +138,18 @@
         processing: true,
         serverSide: true,
         responsive: true,
+		order: [[0, 'asc']],
         ajax: "/pengguna/{{$user->id}}/deliverable",
         columns: [	
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},			
             {data: 'pelanggan', name: 'pelanggan'},
             {data: 'projek', name: 'projek'},
             {data: 'nama', name: 'nama'},			
             {data: 'kategori', name: 'kategori'},
             {data: 'status_', name: 'status_'},            
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
 			{data: 'link', name: 'link'},
         ]
     });

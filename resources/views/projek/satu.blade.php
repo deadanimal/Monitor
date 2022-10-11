@@ -104,10 +104,10 @@
 									<table class="table table-striped table-sm activity-datatable mb-5">
 											<thead>
 												<tr>
+													<th>Tarikh</th>													
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Status</th>
-                                                    <th>Tarikh</th>
                                                     <th>Pelaksana</th>
 													<th></th>
 												</tr>
@@ -189,10 +189,10 @@
 									<table class="table table-striped table-sm deliverable-datatable mb-5">
 											<thead>
 												<tr>
+													<th>Tarikh</th>													
 													<th>Nama</th>
                                                     <th>Kategori</th>
                                                     <th>Status</th>
-                                                    <th>Tarikh</th>
                                                     <th>Pelaksana</th>
                                                     <th>-</th>
 												</tr>
@@ -531,12 +531,16 @@
         processing: true,
         serverSide: true,
         responsive: true,
+		order: [[0, 'asc']],
         ajax: "/projek/{{$projek->id}}/activity",
-        columns: [	
+        columns: [
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},				
             {data: 'nama', name: 'nama'},
             {data: 'kategori', name: 'kategori'},
             {data: 'status', name: 'status'},
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
             {data: 'pelaksana', name: 'pelaksana'},
 			{data: 'link', name: 'link'},
         ]
@@ -553,12 +557,16 @@
         processing: true,
         serverSide: true,
         responsive: true,
+		order: [[0, 'asc']],
         ajax: "/projek/{{$projek->id}}/deliverable",
         columns: [	
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},			
             {data: 'nama', name: 'nama'},
             {data: 'kategori', name: 'kategori'},
             {data: 'status', name: 'status'},
-            {data: 'tarikh_rancang', name: 'tarikh_rancang'},
             {data: 'pelaksana', name: 'pelaksana'},
             {data: 'link', name: 'link'},
         ]
@@ -577,7 +585,10 @@
         responsive: true,
         ajax: "/projek/{{$projek->id}}/dokumen",
         columns: [
-			{data: 'created_at', name: 'created_at'},			
+			{data: { 
+				_: "created_at.display", 
+				sort: "created_at.timestamp", 
+				filter: 'created_at.display' }, name: 'created_at.display'},			
             {data: 'nama', name: 'nama'},
 			{data: 'pemilik', name: 'pemilik'},
             {data: 'link', name: 'link'},
@@ -611,7 +622,10 @@
         responsive: true,
         ajax: "/projek/{{$projek->id}}/nota",
         columns: [
-			{data: 'created_at', name: 'created_at'},			
+			{data: { 
+				_: "created_at.display", 
+				sort: "created_at.timestamp", 
+				filter: 'created_at.display' }, name: 'created_at.display'},			
             {data: 'nama', name: 'nama'},
 			{data: 'pemilik', name: 'pemilik'},
             {data: 'link', name: 'link'},
