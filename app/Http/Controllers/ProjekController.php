@@ -34,7 +34,8 @@ class ProjekController extends Controller
                 })   
                 ->addColumn('link', function (Projek $projek) {
                     $url = '/projek/'.$projek->id;
-                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
+                    $url2 = '/jadual-projek/'.$projek->id;
+                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Teliti</button></a> <a href="'.$url2.'"><button class="btn btn-success">Jadual</button></a>';
                     return $html_button;
                 })     
                 ->rawColumns(['link'])              
@@ -49,14 +50,16 @@ class ProjekController extends Controller
         
         $id = $request->route('id');
         $projek = Projek::find($id);  
+
         $pipers = User::where('organisasi_id', 1)->get();
+        $umpa_remotes = User::where('organisasi_id', 18)->get();
 
         $aktivitis = Activity::where([
             ['projek_id', '=', $projek->id]
         ])->get();
 
         return view('projek.satu', compact([
-            'projek', 'aktivitis', 'pipers'
+            'projek', 'aktivitis', 'pipers', 'umpa_remotes'
         ]));   
     }
 

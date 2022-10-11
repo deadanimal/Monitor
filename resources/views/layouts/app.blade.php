@@ -57,7 +57,7 @@
 							<span class="align-middle">Nota</span>
 						</a>
 					</li>	 -->
-					@if (auth()->user()->organisasi_id == 1)
+					@if (auth()->user()->organisasi_id == 1 || auth()->user()->organisasi_id == 18)
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="/rujukan">
 							<span class="align-middle">Rujukan</span>
@@ -72,12 +72,7 @@
                                 <span class="align-middle">Jadual Staff</span>
                             </a>
                         </li> 	
-						
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/jadual-projek/1">
-                                <span class="align-middle">Jadual Projek</span>
-                            </a>
-                        </li> 								
+									
                     							
  
                     @endrole 	

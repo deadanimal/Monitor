@@ -112,8 +112,7 @@ class PenggunaController extends Controller
         $role = Role::find($request->role_id);
         $user->attachRole($role);
         toast('Pengguna dicipta!','success');
-
-        return redirect('/pengguna');
+        return back();   
 
     }
 
@@ -189,7 +188,8 @@ class PenggunaController extends Controller
         $id = (int)$request->route('id');
         $piper = User::find($id);
         $pipers = User::where('organisasi_id', 1)->get();
-        return view('dashboard.jadual_staff', compact('piper', 'pipers'));
+        $umpa_remotes = User::where('organisasi_id', 18)->get();
+        return view('dashboard.jadual_staff', compact('piper', 'pipers', 'umpa_remotes'));
     }   
     
     public function jadual_projek(Request $request) {
@@ -197,7 +197,8 @@ class PenggunaController extends Controller
         $projek = Projek::find($id);
         $projeks = Projek::all();
         $pipers = User::where('organisasi_id', 1)->get();
-        return view('dashboard.jadual_projek', compact('projek', 'projeks', 'pipers'));
+        $umpa_remotes = User::where('organisasi_id', 18)->get();
+        return view('dashboard.jadual_projek', compact('projek', 'projeks', 'pipers','umpa_remotes'));
     }      
     
     public function cipta_lokasi(Request $req) {

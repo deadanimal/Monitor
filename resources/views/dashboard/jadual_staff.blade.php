@@ -24,8 +24,11 @@
 													<label>Staff</label>
 													<select class="form-control mb-3" id="staffId" name="staffId" onchange="changeStaff()">
 														@foreach($pipers as $pipe)
-                                                        	<option value="{{$pipe->id}}">{{$pipe->name}}</option>
+														<option value="{{ $pipe->id }}">{{ $pipe->roles[0]->display_name }} -  {{ $pipe->name }} </option>
 														@endforeach
+                                                        @foreach ($umpa_remotes as $umpa_remote)
+                                                            <option value="{{ $umpa_remote->id }}">{{ $umpa_remote->roles[0]->display_name }} -  {{ $umpa_remote->name }} </option>
+                                                        @endforeach   														
                                                     </select> 	
 						</div>													
 					</div>

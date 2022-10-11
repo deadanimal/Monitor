@@ -28,18 +28,7 @@
             
 			<div class="row">
 
-				<div class="col-xl-3">
-					<div class="card">
-						<div class="card-body">
-													<label>Projek</label>
-													<select class="form-control mb-3" id="projekId" name="projekId" onchange="changeProjek()">
-														@foreach($projeks as $pipe)
-                                                        	<option value="{{$pipe->id}}">{{$pipe->organisasi->simbol}} {{$pipe->nama}}</option>
-														@endforeach
-                                                    </select> 	
-						</div>													
-					</div>
-				</div>            
+			        
 
                 <div class="col-xl-12">
 
@@ -159,8 +148,11 @@
 
                                                     <select class="form-control mb-3" id="pekerja_id" name="pekerja_id">
                                                         @foreach ($pipers as $piper)
-                                                            <option value="{{ $piper->id }}">{{ $piper->name }} </option>
-                                                        @endforeach     
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach   
+                                                        @foreach ($umpa_remotes as $umpa_remote)
+                                                            <option value="{{ $umpa_remote->id }}">{{ $umpa_remote->roles[0]->display_name }} -  {{ $umpa_remote->name }} </option>
+                                                        @endforeach                                                           
                                                     </select>                                                       
                                                 </div>   
                                                 
@@ -223,8 +215,11 @@
 
                                                     <select class="form-control mb-3" id="pekerja_id" name="pekerja_id">
                                                         @foreach ($pipers as $piper)
-                                                            <option value="{{ $piper->id }}">{{ $piper->name }} </option>
-                                                        @endforeach     
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach   
+                                                        @foreach ($umpa_remotes as $umpa_remote)
+                                                            <option value="{{ $umpa_remote->id }}">{{ $umpa_remote->roles[0]->display_name }} -  {{ $umpa_remote->name }} </option>
+                                                        @endforeach                                                                
                                                     </select>                                                       
                                                 </div>   
                                                 
@@ -259,14 +254,6 @@
 @endsection	
 
 @section('script')
-
-<script type="text/javascript">
-	function changeProjek() {
-		var e = document.getElementById("projekId").value.toString();
-		var url = '/jadual-projek/' + e;	
-		window.location = url;
-	}
-</script>
 
 <script type="text/javascript">
   $(function () {
