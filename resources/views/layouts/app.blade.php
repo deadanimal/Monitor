@@ -67,13 +67,11 @@
 					
                     @role('admin|pmo')    
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/jadual-staff/{{auth()->user()->id}}">
-                                <span class="align-middle">Jadual Staff</span>
+						<li class="sidebar-item">
+                            <a class="sidebar-link" href="/pengguna">
+                                <span class="align-middle">Pengguna</span>
                             </a>
-                        </li> 	
-									
-                    							
+                        </li>   										                    							
  
                     @endrole 	
 					
@@ -119,13 +117,7 @@
                             <a class="sidebar-link" href="/borang-admin">
                                 <span class="align-middle">Borang</span>
                             </a>
-                        </li> 						
-                        
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/pengguna">
-                                <span class="align-middle">Pengguna</span>
-                            </a>
-                        </li>  
+                        </li> 						                        
 						
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/organisasi">

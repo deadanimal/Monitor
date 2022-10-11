@@ -18,7 +18,7 @@
 
 			<div class="row">
 
-				<div class="col-xl-3">
+				<!-- <div class="col-xl-3">
 					<div class="card">
 						<div class="card-body">
 													<label>Staff</label>
@@ -32,7 +32,7 @@
                                                     </select> 	
 						</div>													
 					</div>
-				</div>
+				</div> -->
 
 
 
@@ -125,13 +125,13 @@
 
 @section('script')
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function changeStaff() {
 		var e = document.getElementById("staffId").value.toString();
 		var url = '/jadual-staff/' + e;	
 		window.location = url;
 	}
-</script>
+</script> -->
 
 <script type="text/javascript">
   $(function () {

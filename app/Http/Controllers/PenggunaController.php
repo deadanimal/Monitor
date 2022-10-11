@@ -71,25 +71,49 @@ class PenggunaController extends Controller
         $organisasis = Organisasi::all();
 
         if ($request->ajax()) {
-            return Datatables::collection(User::all())
-                ->addIndexColumn()
-                ->addColumn('organisasi', function (User $user) {
-                    return $user->organisasi->nama;
-                })
-                ->addColumn('role', function (User $user) {
-                    $statement = '';
-                    foreach ($user->roles as $role) {
-                        $statement .= $role->display_name.' ';
-                    }
-                    return $statement;
-                })      
-                ->addColumn('link', function (User $user) {
-                    $url = '/pengguna/'.$user->id;
-                    $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Lihat</button></a>';
-                    return $html_button;
-                })     
-                ->rawColumns(['link'])                            
-                ->make(true);
+
+                if ($user->hasRole(['admin'])) {  
+                    return Datatables::collection(User::all())
+                    ->addIndexColumn()
+                    ->addColumn('organisasi', function (User $user) {
+                        return $user->organisasi->nama;
+                    })
+                    ->addColumn('role', function (User $user) {
+                        $statement = '';
+                        foreach ($user->roles as $role) {
+                            $statement .= $role->display_name.' ';
+                        }
+                        return $statement;
+                    })                                        
+                    ->addColumn('link', function (User $user) {
+                        $url = '/pengguna/'.$user->id;
+                        $url2 = '/jadual-staff/'.$user->id;
+                        $html_button = '<a href="'.$url.'"><button class="btn btn-primary">Teliti</button></a> <a href="'.$url2.'"><button class="btn btn-success">Jadual</button></a>';
+                        return $html_button;
+                    }) 
+                    ->rawColumns(['link'])                            
+                    ->make(true);                      
+                } else {
+                    return Datatables::collection(User::all())
+                    ->addIndexColumn()
+                    ->addColumn('organisasi', function (User $user) {
+                        return $user->organisasi->nama;
+                    })
+                    ->addColumn('role', function (User $user) {
+                        $statement = '';
+                        foreach ($user->roles as $role) {
+                            $statement .= $role->display_name.' ';
+                        }
+                        return $statement;
+                    })                        
+                    ->addColumn('link', function (User $user) {
+                        $url2 = '/jadual-staff/'.$user->id;
+                        $html_button = '<a href="'.$url2.'"><button class="btn btn-success">Jadual</button></a>';
+                        return $html_button;
+                    })                       
+                    ->rawColumns(['link'])                            
+                    ->make(true);                    
+                }  
         }        
 
 
