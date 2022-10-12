@@ -352,7 +352,7 @@
 													</div>		
 													<div class="mb-3 col-md-6">
 														<label for="title">Jumlah</label>
-														<input type="number" class="form-control" id="jumlah" name="jumlah" required>
+														<input type="number" class="form-control" step='0.01' id="jumlah" name="jumlah" required>
 													</div>	
 													<div class="mb-3 col-md-6">
 														<label>Tarikh</label>                                               
