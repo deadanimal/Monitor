@@ -32,7 +32,7 @@
 						<b>Nama:</b> {{$user->name}} <br>
 						<b>Email:</b> {{$user->email}} <br>
 						<b>Organisasi:</b> {{$user->organisasi->nama}} <br>
-						<b>Gaji Harian:</b> RM {{ number_format($user->day_rate/100, 2, '.', ',') }} <br>
+						<!-- <b>Gaji Harian:</b> RM {{ number_format($user->day_rate/100, 2, '.', ',') }} <br> -->
 
          
 
