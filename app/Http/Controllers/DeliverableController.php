@@ -154,7 +154,7 @@ class DeliverableController extends Controller
     public function kemaskini_deliverable(Request $req) {
         $projek_id = (int)$req->route('projek_id');
         $id = (int)$req->route('id');
-        $user = $request->user();
+        $user = $req->user();
         $user_id = $user->id;
         
         $projek = Projek::find($projek_id);        
