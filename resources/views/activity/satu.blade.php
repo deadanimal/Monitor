@@ -47,7 +47,29 @@
                                                 <tr>
                                                         <td>Pelaksana</td>
                                                         <td>{{$act->pekerja->name}}</td>
-                                                </tr>   
+                                                </tr>  
+                                                <tr>
+                                                        <td>Pemeriksa</td>
+                                                        <td>
+                                                                @if(empty($act->pemeriksa))
+                                                                        -
+                                                                @else
+                                                                        {{$act->pemeriksa->name}}
+                                                                @endif                                                                
+                                                        
+                                                        </td>
+                                                </tr> 
+                                                <tr>
+                                                        <td>Pengesah</td>
+                                                        <td>
+                                                                @if(empty($act->pengesah))
+                                                                        -
+                                                                @else
+                                                                        {{$act->pengesah->name}}
+                                                                @endif                                                                
+                                                        
+                                                        </td>
+                                                </tr>                                                                                                  
                                                 <tr>
                                                         <td>Penyelaras</td>
                                                         <td>{{$act->supervisor->name}}</td>
@@ -106,11 +128,15 @@
                                       
                                 <div class="mb-3">
                                     <label class="form-label">Jenis</label>
-                                    <select class="form-control mb-3" name="jenis">										
-                                        <option value="SAH">Penyelaras - Pengesahan </option>           
-                                        <option value="OK">Pelaksana - Tiada Masalah </option>                         
-                                        <option value="KO">Pelaksana - Bermasalah </option> 
-									</select>                                    
+                                        <select class="form-control mb-3" name="jenis">										                                                 
+                                                <option value="OK">Pelaksana - Tiada Masalah </option>                         
+                                                <option value="KO">Pelaksana - Bermasalah </option> 
+                                                <option value="PE-OK">Pemeriksa - Lulus </option> 
+                                                <option value="PE-KO">Pemeriksa - Gagal </option>
+                                                <option value="PG-OK">Pengesah - Lulus </option> 
+                                                <option value="PG-KO">Pengesah - Gagal </option>
+                                                <option value="SAH">Penyelaras - Pengesahan </option>                                          
+				        </select>                                    
                                 </div>   
                                 <div class="mb-3">
                                     <label class="form-label">Kenyataan</label>
@@ -131,13 +157,113 @@
                         
                                 
                                 
-                </div>                
+                </div>   
+                
+                
+                
+                
+
+             
 
 
 			</div>		
 				
 			
 
+                        <div class="row">
+
+                                @role('admin|pmo')  
+                                <div class="col-xl-6">
+
+                                <div class="card">
+                                                                                                <div class="card-header">
+                                                                                                        <h5 class="card-title mb-0">Ubah Aktiviti</h5>
+                                                                                                </div>
+                                                                                                <div class="card-body">
+
+                                                        <form action='/projek/{{ $projek->id}}/activity/{{$act->id}}' method="POST">
+                                                                @method('PUT')
+                                                        @csrf
+
+                                                        <div class="row">
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Nama</label>
+                                                                <input type="text" class="form-control" id="nama" name="nama" value="{{$act->nama}}" placeholder="Nama Aktiviti">
+                                                                </div>
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Kategori</label>
+                                                                <select class="form-control mb-3" id="kategori" name="kategori">
+                                                                        <option value="ANALISA" {{ $act->kategori == 'ANALISA' ? 'selected' : '' }}>Analisa</option>
+                                                                        <option value="PEMBANGUNAN" {{ $act->kategori == 'PEMBANGUNAN' ? 'selected' : '' }}>Pembangunan</option>
+                                                                        <option value="PENGUJIAN" {{ $act->kategori == 'PENGUJIAN' ? 'selected' : '' }}>Pengujian</option>
+                                                                        <option value="LATIHAN" {{ $act->kategori == 'LATIHAN' ? 'selected' : '' }}>Latihan</option>
+                                                                        <option value="PENTADBIRAN" {{ $act->kategori == 'PENTADBIRAN' ? 'selected' : '' }}>Pentadbiran</option>
+                                                                        <option value="LAIN" {{ $act->kategori == 'LAIN' ? 'selected' : '' }}>Lain-lain</option>
+                                                                </select>                                                       
+                                                                </div>
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Tarikh</label>
+
+                                                                <!-- <div class="input-group date" id="datetimepicker-date" data-target-input="nearest">
+                                                                                                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker-date">
+                                                                                                                        <div class="input-group-text" data-target="#datetimepicker-date" data-toggle="datetimepicker"><i class="fa fa-calendar"></i></div>
+                                                                                                                </div>                                                     -->
+                                                                <input type="date" class="form-control" id="tarikh_rancang" name="tarikh_rancang" value="{{$act->tarikh_rancang}}">
+                                                                </div>
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Pelaksana</label>
+
+                                                                <select class="form-control mb-3" id="pekerja_id" name="pekerja_id">
+                                                                        @foreach ($pipers as $piper)
+                                                                        <option value="{{ $piper->id }}" {{ $act->pekerja_id == $piper->id ? 'selected' : '' }}>{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                                        @endforeach   
+                                                                        @foreach ($umpa_remotes as $umpa_remote)
+                                                                        <option value="{{ $umpa_remote->id }}" {{ $act->pekerja_id == $umpa_remote->id ? 'selected' : '' }}>{{ $umpa_remote->roles[0]->display_name }} -  {{ $umpa_remote->name }} </option>
+                                                                        @endforeach                                                           
+                                                                </select>                                                       
+                                                                </div>   
+
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Pemeriksa</label>
+
+                                                                <select class="form-control mb-3" id="pemeriksa_id" name="pemeriksa_id">
+                                                                        @foreach ($pipers as $piper)
+                                                                        <option value="{{ $piper->id }}" {{ $act->pemeriksa_id == $piper->id ? 'selected' : '' }}>{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                                        @endforeach                                                            
+                                                                </select>                                                       
+                                                                </div> 
+                                                                
+                                                                <div class="mb-3 col-md-6">
+                                                                <label>Pengesah</label>
+
+                                                                <select class="form-control mb-3" id="pengesah_id" name="pengesah_id">
+                                                                        @foreach ($pipers as $piper)
+                                                                        <option value="{{ $piper->id }}" {{ $act->pengesah_id == $piper->id ? 'selected' : '' }}>{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                                        @endforeach                                                          
+                                                                </select>                                                       
+                                                                </div>                                                 
+                                                                
+                                                                <div class="mb-3 col-md-12">
+                                                                <label>Deskripsi</label>
+                                                                <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deksripsi untuk aktiviti" rows="3">{{$act->deskripsi}}</textarea>
+                                                                </div>                                                   
+                                                                
+                                                                
+                                                        </div>    
+                                                        
+                                                        <button type="submit" class="btn btn-primary">Ubah</button>
+
+                                                        </form>
+                                                        
+
+                                                                                                </div>
+                                                                                        </div>	
+
+                                </div>  
+                                @endrole 
+                
+                
+                        </div>
 			
 		</div>
 

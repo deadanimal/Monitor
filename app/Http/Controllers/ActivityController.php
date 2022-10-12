@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\Projek;
 use App\Models\Organisasi;
+use App\Models\Notifikasi;
+use App\Models\User;
 
 
 class ActivityController extends Controller
@@ -96,6 +98,8 @@ class ActivityController extends Controller
         $activity->kategori = $request->kategori;
         $activity->status = 'CIPTA';
         $activity->pekerja_id = (int)$request->pekerja_id;
+        $activity->pemeriksa_id = (int)$request->pemeriksa_id;
+        $activity->pengesah_id = (int)$request->pengesah_id;
         $activity->organisasi_id = $organisasi->id;
         $activity->tarikh_rancang = $request->tarikh_rancang;
         $activity->deskripsi = $request->deskripsi;
@@ -113,14 +117,45 @@ class ActivityController extends Controller
         return back();
     }
 
+    public function ubah_activity(Request $request) {
+        
+        $id = (int)$request->route('id');
+        $user = $request->user();
+        $activity = Activity::find($id);
+        
+        $activity->nama = $request->nama;
+        $activity->kategori = $request->kategori;
+        $activity->status = $request->status;
+        $activity->pekerja_id = (int)$request->pekerja_id;
+        $activity->pemeriksa_id = (int)$request->pemeriksa_id;
+        $activity->pengesah_id = (int)$request->pengesah_id;
+        $activity->organisasi_id = $act->organisasi->id;
+        $activity->tarikh_rancang = $request->tarikh_rancang;
+        $activity->deskripsi = $request->deskripsi;
+        $activity->projek_id = $act->projek->id;
+        $activity->supervisor_id = $act->supervisor->id;
+
+        $activity->save();
+
+        activity()
+            ->performedOn($activity)
+            ->causedBy($user)
+            ->log('ubah');        
+
+        toast('Aktiviti diubah!','success');
+        return back();
+    }    
+
     public function satu_activity(Request $request) {
         $projek_id = (int)$request->route('projek_id');
         $id = (int)$request->route('id');
         
         $projek = Projek::find($projek_id);        
         $act = Activity::find($id);
+        $pipers = User::where('organisasi_id', 1)->get();
+        $umpa_remotes = User::where('organisasi_id', 18)->get();        
 
-        return view('activity.satu', compact('act', 'projek'));
+        return view('activity.satu', compact('act', 'projek','pipers','umpa_remotes'));
     }
 
     public function kemaskini_activity(Request $req) {
@@ -136,16 +171,30 @@ class ActivityController extends Controller
         if ($user_id == $act->pekerja_id) {
             if($req->jenis == 'OK') {
                 $act->deskripsi_ok = $req->deskripsi;
-                $act->status = 'SIAP';          
+                $act->status = 'PELAKSANA - SIAP';  
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> siap oleh '.$act->pekerja->nama.'.';
+                $noti->user_id = $act->pemeriksa_id;
+                $noti->save();
+
             } else if($req->jenis == 'KO') {
                 $act->deskripsi_ko = $req->deskripsi;
-                $act->status = 'TIDAK SIAP';
+                $act->status = 'PELAKSANA - TIDAK SIAP';
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> tidak siap oleh '.$act->pekerja->nama.'.';
+                $noti->user_id = $act->pemeriksa_id;
+                $noti->save();                
+
             }             
         }    
 
         if ($req->jenis == 'SAH' and $user_id == $act->supervisor_id) {
             $act->deskripsi_sah = $req->deskripsi;
-            $act->status = 'SAH';      
+            $act->status = 'PENYELARAS - SAH';      
             $act->tarikh_siap = new DateTime();      
         }
         

@@ -155,6 +155,26 @@
                                                         @endforeach                                                           
                                                     </select>                                                       
                                                 </div>   
+
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Pemeriksa</label>
+
+                                                    <select class="form-control mb-3" id="pemeriksa_id" name="pemeriksa_id">
+                                                        @foreach ($pipers as $piper)
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach                                                             
+                                                    </select>                                                       
+                                                </div> 
+                                                
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Pengesah</label>
+
+                                                    <select class="form-control mb-3" id="pengesah_id" name="pengesah_id">
+                                                        @foreach ($pipers as $piper)
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach                                                             
+                                                    </select>                                                       
+                                                </div>                                                 
                                                 
                                                 <div class="mb-3 col-md-12">
                                                     <label>Deskripsi</label>
@@ -221,7 +241,27 @@
                                                             <option value="{{ $umpa_remote->id }}">{{ $umpa_remote->roles[0]->display_name }} -  {{ $umpa_remote->name }} </option>
                                                         @endforeach                                                                
                                                     </select>                                                       
-                                                </div>   
+                                                </div>  
+
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Pemeriksa</label>
+
+                                                    <select class="form-control mb-3" id="pemeriksa_id" name="pemeriksa_id">
+                                                        @foreach ($pipers as $piper)
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach                                                             
+                                                    </select>                                                       
+                                                </div> 
+                                                
+                                                <div class="mb-3 col-md-6">
+                                                    <label>Pengesah</label>
+
+                                                    <select class="form-control mb-3" id="pengesah_id" name="pengesah_id">
+                                                        @foreach ($pipers as $piper)
+                                                            <option value="{{ $piper->id }}">{{ $piper->roles[0]->display_name }} - {{ $piper->name }} </option>
+                                                        @endforeach                                                             
+                                                    </select>                                                       
+                                                </div>                                                
                                                 
                                                 <div class="mb-3 col-md-12">
                                                     <label>Deskripsi</label>

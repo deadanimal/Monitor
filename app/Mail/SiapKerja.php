@@ -16,7 +16,7 @@ class SiapKerja extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($orgs)
     {
         //
     }
@@ -28,6 +28,11 @@ class SiapKerja extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.siap_kerja');
+                    // ->with([
+                    //     'orderName' => $this->order->name,
+                    //     'orderPrice' => $this->order->price,
+                    // ]);
+        //return $this->view('view.name');
     }
 }

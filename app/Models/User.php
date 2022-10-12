@@ -58,6 +58,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Activity::class, 'supervisor_id');
     }  
+
+    public function activity_pemeriksa()
+    {
+        return $this->hasMany(Activity::class, 'pemeriksa_id');
+    }   
+    
+    public function activity_pengesah()
+    {
+        return $this->hasMany(Activity::class, 'pengesah_id');
+    }       
     
     public function deliverable_pekerja()
     {
@@ -68,6 +78,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Deliverable::class, 'supervisor_id');
     } 
+
+    public function deliverable_pemeriksa()
+    {
+        return $this->hasMany(Deliverable::class, 'pemeriksa_id');
+    } 
+    
+    public function deliverable_pengesah()
+    {
+        return $this->hasMany(Deliverable::class, 'pengesah_id');
+    }     
     
     public function dokumens()
     {

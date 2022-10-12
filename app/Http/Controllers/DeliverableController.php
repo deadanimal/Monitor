@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Deliverable;
 use App\Models\Projek;
 use App\Models\Organisasi;
+use App\Models\User;
 
 class DeliverableController extends Controller
 {
@@ -90,6 +91,8 @@ class DeliverableController extends Controller
         $deliverable->kategori = $request->kategori;
         $deliverable->status = 'CIPTA';
         $deliverable->pekerja_id = (int)$request->pekerja_id;
+        $deliverable->pemeriksa_id = (int)$request->pemeriksa_id;
+        $deliverable->pengesah_id = (int)$request->pengesah_id;        
         $deliverable->organisasi_id = $organisasi->id;
         $deliverable->tarikh_rancang = $request->tarikh_rancang;
         $deliverable->deskripsi = $request->deskripsi;
@@ -107,14 +110,45 @@ class DeliverableController extends Controller
         return back();
     }
 
+
+    public function ubah_deliverable(Request $request) {
+        
+        $id = (int)$request->route('id');
+        $user = $request->user();
+        $deliverable = Deliverable::find($id);
+        
+        $deliverable->nama = $request->nama;
+        $deliverable->kategori = $request->kategori;
+        $deliverable->pekerja_id = (int)$request->pekerja_id;
+        $deliverable->pemeriksa_id = (int)$request->pemeriksa_id;
+        $deliverable->pengesah_id = (int)$request->pengesah_id;        
+        $deliverable->organisasi_id = $deliverable->organisasi->id;
+        $deliverable->tarikh_rancang = $request->tarikh_rancang;
+        $deliverable->deskripsi = $request->deskripsi;
+        $deliverable->projek_id = $deliverable->projek->id;
+        $deliverable->supervisor_id = $deliverable->supervisor->id;
+
+        $deliverable->save();
+
+        activity()
+            ->performedOn($deliverable)
+            ->causedBy($user)
+            ->log('ubah');          
+
+        toast('Deliverable diubah!','success');
+        return back();
+    }    
+
     public function satu_deliverable(Request $request) {
         $projek_id = (int)$request->route('projek_id');
         $id = (int)$request->route('id');
         
         $projek = Projek::find($projek_id);        
         $deli = Deliverable::find($id);
+        $pipers = User::where('organisasi_id', 1)->get();
+        $umpa_remotes = User::where('organisasi_id', 18)->get();        
 
-        return view('deliverable.satu', compact('deli', 'projek'));
+        return view('deliverable.satu', compact('deli', 'projek','pipers','umpa_remotes'));
     }
 
     public function kemaskini_deliverable(Request $req) {
@@ -130,16 +164,29 @@ class DeliverableController extends Controller
         if ($user_id == $deli->pekerja_id) {
             if($req->jenis == 'OK') {
                 $deli->deskripsi_ok = $req->deskripsi;
-                $deli->status = 'SIAP';          
+                $deli->status = 'PELAKSANA - SIAP'; 
+                
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/deliverable/'.$id;
+                $noti->message = '<a href="'.$url.'"> Hasil '.$id.'</a> siap oleh '.$deli->pekerja->nama.'.';
+                $noti->user_id = $deli->pemeriksa_id;
+                $noti->save();
+
             } else if($req->jenis == 'KO') {
                 $deli->deskripsi_ko = $req->deskripsi;
-                $deli->status = 'TIDAK SIAP';
+                $deli->status = 'PELAKSANA - TIDAK SIAP';
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/deliverable/'.$id;
+                $noti->message = '<a href="'.$url.'"> Hasil '.$id.'</a> siap oleh '.$deli->pekerja->nama.'.';
+                $noti->user_id = $deli->pemeriksa_id;
+                $noti->save();                
             }             
         }    
 
         if ($req->jenis == 'SAH' and $user_id == $deli->supervisor_id) {
             $deli->deskripsi_sah = $req->deskripsi;
-            $deli->status = 'SAH';      
+            $deli->status = 'PENYELARAS - SAH';
             $deli->tarikh_siap = new DateTime();      
         }
         
