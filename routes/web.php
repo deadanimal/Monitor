@@ -10,6 +10,7 @@ use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\NotaController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\DeliverableController;
 use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\DokumenController;

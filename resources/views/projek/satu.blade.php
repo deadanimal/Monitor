@@ -66,11 +66,11 @@
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#deliverable" role="tab">
 										Hasil
 									</a>  
-                                    <!-- @role(['client-finance','client-pmo','client-end-user','admin','pmo','finance'])
+                                    @role(['client-finance','client-pmo','client-end-user','admin','pmo','finance'])
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#invoice" role="tab">
 										Inbois
 									</a>
-                                    @endrole -->
+                                    @endrole
 									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#dokumen" role="tab">
 										Dokumen
 									</a>                                                                       
@@ -270,18 +270,56 @@
 
 
 
-								<div class="tab-pane fade" id="invoice" role="tabpanel">
+								<div class="tab-pane fade active" id="invoice" role="tabpanel">
+
+									<table class="table table-striped table-sm invoice-datatable">
+											<thead>
+												<tr>
+													<th>Tarikh Rancang</th>
+													<th>Tarikh Hantar</th>
+													<th>Nama</th>
+													<th>Status</th>
+                                                    <th></th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+									    </table>								
 
                                     <div class="card">
 										<div class="card-header">
-											<h5 class="card-title mb-0">Inbois</h5>
+											<h5 class="card-title mb-0">Invoice</h5>
 										</div>
-										<div class="card-body">
+										<div class="card-body">                                
 
-                                        
+											<form action="/projek/{{$projek->id}}/invoice" enctype="multipart/form-data" method="POST">
+												@csrf
+
+												<div class="row">
+													<div class="mb-3 col-md-6">
+														<label for="title">Nama</label>
+														<input type="text" class="form-control" id="nama" name="nama" placeholder="Nama invoice" required>
+													</div>
+													<div class="mb-3 col-md-6">
+														<label for="title">Kategori</label>
+														<input type="text" class="form-control" id="kategori" name="kategori" placeholder="Kategori invoice" required>
+													</div>		
+													<div class="mb-3 col-md-6">
+														<label for="title">Jumlah</label>
+														<input type="number" class="form-control" id="jumlah" name="jumlah" required>
+													</div>	
+													<div class="mb-3 col-md-6">
+														<label>Tarikh</label>                                               
+														<input type="date" class="form-control" id="tarikh_rancang" name="tarikh_rancang">
+													</div>	
+												</div>																																
+												<button class="btn btn-primary">Cipta</button>
+											</form>    										
+
 
 										</div>
 									</div>
+
 
 								</div>
 
@@ -628,6 +666,33 @@
 				filter: 'created_at.display' }, name: 'created_at.display'},			
             {data: 'nama', name: 'nama'},
 			{data: 'pemilik', name: 'pemilik'},
+            {data: 'link', name: 'link'},
+        ]
+    });
+
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(function () {
+
+    var table = $('.invoice-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/projek/{{$projek->id}}/invoice",
+        columns: [
+			{data: { 
+				_: "tarikh_rancang.display", 
+				sort: "tarikh_rancang.timestamp", 
+				filter: 'tarikh_rancang.display' }, name: 'tarikh_rancang.display'},	
+			{data: { 
+				_: "tarikh_hantar.display", 
+				sort: "tarikh_hantar.timestamp", 
+				filter: 'tarikh_hantar.display' }, name: 'tarikh_hantar.display'},								
+            {data: 'nama', name: 'nama'},
+			{data: 'status', name: 'status'},
             {data: 'link', name: 'link'},
         ]
     });

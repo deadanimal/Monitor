@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+
+    public function projek()
+    {
+        return $this->belongsTo(Projek::class);
+    }        
+
+    public function organisasi()
+    {
+        return $this->belongsTo(Organisasi::class);
+    }    
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }      
 }
