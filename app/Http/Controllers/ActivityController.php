@@ -129,11 +129,11 @@ class ActivityController extends Controller
         $activity->pekerja_id = (int)$request->pekerja_id;
         $activity->pemeriksa_id = (int)$request->pemeriksa_id;
         $activity->pengesah_id = (int)$request->pengesah_id;
-        $activity->organisasi_id = $act->organisasi->id;
+        $activity->organisasi_id = $request->organisasi->id;
         $activity->tarikh_rancang = $request->tarikh_rancang;
         $activity->deskripsi = $request->deskripsi;
-        $activity->projek_id = $act->projek->id;
-        $activity->supervisor_id = $act->supervisor->id;
+        $activity->projek_id = $request->projek->id;
+        $activity->supervisor_id = $request->supervisor->id;
 
         $activity->save();
 
