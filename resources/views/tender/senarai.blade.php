@@ -1,31 +1,31 @@
 @extends('layouts.app')
- 
 
- 
+
+
 @section('content')
 
-	<main class="content">
+<main class="content">
 
-		<div class="container-fluid">
+    <div class="container-fluid">
 
-			<div class="header">
-				<h1 class="header-title">
-                    Senarai Tender
-				</h1>
-			</div>
-
-		
-				
-			
-
-			
-		</div>
+        <div class="header">
+            <h1 class="header-title">
+                Senarai Tender
+            </h1>
+        </div>
 
 
 
-	</main>
 
-@endsection	
+
+
+    </div>
+
+
+
+</main>
+
+@endsection
 
 @section('script')
 
