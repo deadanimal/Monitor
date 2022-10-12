@@ -30,7 +30,11 @@ class ProjekController extends Controller
             $projeks = Projek::where('organisasi_id', $user_organisasi->id)->get();  
         } else {
             
-            $projeks = Projek::all();
+            if($user->hasRole(['admin', 'pmo'])) {
+                $projeks = Projek::all();            
+            } else {
+                $projeks = Projek::where('organisasi_id', '<>', 1);
+            }
         
         }
 
