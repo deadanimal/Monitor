@@ -23,7 +23,7 @@ class ProjekController extends Controller
         
         $orgs = Organisasi::all();
 
-        Mail::to('d5dd8393-fa52-441d-9000-5549f076eb95@email.webhook.site')->send(new SiapKerja($orgs));
+        //Mail::to('d5dd8393-fa52-441d-9000-5549f076eb95@email.webhook.site')->send(new SiapKerja($orgs));
 
         $user_organisasi = Organisasi::where('id', $user->organisasi_id)->first();
         if ($user_organisasi->id != 1) {
