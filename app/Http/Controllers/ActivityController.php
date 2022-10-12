@@ -125,7 +125,6 @@ class ActivityController extends Controller
         
         $activity->nama = $request->nama;
         $activity->kategori = $request->kategori;
-        $activity->status = $request->status;
         $activity->pekerja_id = (int)$request->pekerja_id;
         $activity->pemeriksa_id = (int)$request->pemeriksa_id;
         $activity->pengesah_id = (int)$request->pengesah_id;
