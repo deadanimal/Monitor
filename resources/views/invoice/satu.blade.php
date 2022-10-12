@@ -155,10 +155,10 @@
 
                                                    
                                                                 
-                                                                <!-- <div class="mb-3 col-md-12">
-                                                                <label>Deskripsi</label>
-                                                                <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deksripsi untuk invoice" rows="3">{{$invoice->deskripsi}}</textarea>
-                                                                </div>                                                    -->
+                                                                <div class="mb-3 col-md-12">
+                                                                    <label>Deskripsi</label>
+                                                                    <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deksripsi untuk invoice" rows="3">{{$invoice->deskripsi}}</textarea>
+                                                                </div>                                                   
                                                                 
                                                                 
                                                         </div>    
