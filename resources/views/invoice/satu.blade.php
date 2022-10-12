@@ -43,7 +43,11 @@
                                                 <tr>
                                                         <td>Status</td>
                                                         <td>{{ Str::title($invoice->status) }}</td>
-                                                </tr>                                                                                                   
+                                                </tr>  
+                                                <tr>
+                                                        <td>Jumlah</td>
+                                                        <td>RM {{ number_format($invoice->jumlah/100, 2, '.', ',') }}</td>
+                                                </tr>                                                                                                                                                  
                                                 <tr>
                                                         <td>Pencipta</td>
                                                         <td>{{$invoice->user->name}}</td>
@@ -55,7 +59,11 @@
                                                 <tr>
                                                         <td>Tarikh Hantar</td>
                                                         <td>{{$invoice->tarikh_hantar}}</td>
-                                                </tr>                                                                                                                                                                                                                                                                                              																				
+                                                </tr>   
+                                                <tr>
+                                                        <td>Tarikh Bayar</td>
+                                                        <td>{{$invoice->tarikh_bayar}}</td>
+                                                </tr>                                                                                                                                                                                                                                                                                                                                            																				
                                             </tbody>
                                         </table>	
 
@@ -108,7 +116,13 @@
                                                                 <div class="mb-3 col-md-6">
                                                                     <label>Kategori</label>
                                                                     <input type="text" class="form-control" id="kategori" name="kategori" value="{{$invoice->kategori}}" placeholder="kategori Invoice">
-                                                                </div>                                                                
+                                                                </div>    
+                                                                
+													<div class="mb-3 col-md-6">
+														<label for="title">Jumlah</label>
+														<input type="number" class="form-control" step='0.01' id="jumlah" name="jumlah" required>
+													</div>	
+
                                                                 <div class="mb-3 col-md-6">
                                                                     <label>Tarikh Rancang</label>
 
@@ -129,12 +143,22 @@
                                                                     <input type="date" class="form-control" id="tarikh_hantar" name="tarikh_hantar" value="{{$invoice->tarikh_hantar}}">
                                                                 </div>  
 
+                                                                <div class="mb-3 col-md-6">
+                                                                    <label>Tarikh Bayar</label>
+
+                                                                <!-- <div class="input-group date" id="datetimepicker-date" data-target-input="nearest">
+                                                                                                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker-date">
+                                                                                                                        <div class="input-group-text" data-target="#datetimepicker-date" data-toggle="datetimepicker"><i class="fa fa-calendar"></i></div>
+                                                                                                                </div>                                                     -->
+                                                                    <input type="date" class="form-control" id="tarikh_bayar" name="tarikh_bayar" value="{{$invoice->tarikh_bayar}}">
+                                                                </div>                                                                  
+
                                                    
                                                                 
-                                                                <div class="mb-3 col-md-12">
+                                                                <!-- <div class="mb-3 col-md-12">
                                                                 <label>Deskripsi</label>
                                                                 <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deksripsi untuk invoice" rows="3">{{$invoice->deskripsi}}</textarea>
-                                                                </div>                                                   
+                                                                </div>                                                    -->
                                                                 
                                                                 
                                                         </div>    

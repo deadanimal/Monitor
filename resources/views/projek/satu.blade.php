@@ -355,7 +355,7 @@
 														<input type="number" class="form-control" step='0.01' id="jumlah" name="jumlah" required>
 													</div>	
 													<div class="mb-3 col-md-6">
-														<label>Tarikh</label>                                               
+														<label>Tarikh Rancang</label>                                               
 														<input type="date" class="form-control" id="tarikh_rancang" name="tarikh_rancang">
 													</div>	
 												</div>																																

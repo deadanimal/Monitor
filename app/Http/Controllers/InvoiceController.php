@@ -95,6 +95,7 @@ class InvoiceController extends Controller
         $invoice->kategori = $request->kategori;
         $invoice->tarikh_rancang = $request->tarikh_rancang;
         $invoice->tarikh_hantar = $request->tarikh_hantar;
+        $invoice->deskripsi = $request->deskripsi;
         $invoice->jumlah = $request->jumlah*100;
 
         $invoice->save();
