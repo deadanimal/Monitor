@@ -9,6 +9,8 @@ use App\Models\Activity;
 use App\Models\Projek;
 use App\Models\Organisasi;
 use App\Models\User;
+use App\Models\ProPengguna;
+use App\Models\ProTransaksi;
 
 use App\Mail\SiapKerja;
 use Illuminate\Support\Facades\Mail;
@@ -66,12 +68,8 @@ class ProjekController extends Controller
         $pipers = User::where('organisasi_id', 1)->get();
         $umpa_remotes = User::where('organisasi_id', 18)->get();
 
-        $aktivitis = Activity::where([
-            ['projek_id', '=', $projek->id]
-        ])->get();
-
         return view('projek.satu', compact([
-            'projek', 'aktivitis', 'pipers', 'umpa_remotes'
+            'projek', 'pipers', 'umpa_remotes'
         ]));   
     }
 

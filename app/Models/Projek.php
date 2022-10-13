@@ -27,6 +27,11 @@ class Projek extends Model
     public function notas()
     {
         return $this->hasMany(Nota::class);
-    }      
+    } 
+    
+    public function transaksis()
+    {
+        return $this->hasMany(ProTransaksi::class);
+    }     
 
 }

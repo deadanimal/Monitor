@@ -15,6 +15,7 @@ use App\Http\Controllers\DeliverableController;
 use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\TenderController;
+use App\Http\Controllers\ProTransaksiController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -121,6 +122,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('projek/{projek_id}/masalah/{id}/terima', [MasalahController::class, 'terima_masalah']);
     Route::post('projek/{projek_id}/masalah/{id}/siap', [MasalahController::class, 'siap_masalah']);
     Route::post('projek/{projek_id}/masalah/{id}/sah', [MasalahController::class, 'sah_masalah']);  
+
+    Route::get('projek/{projek_id}/transaksi', [ProTransaksiController::class, 'senarai_transaksi_projek']);
+    Route::get('projek/{projek_id}/transaksi/{id}', [ProTransaksiController::class, 'satu_transaksi_projek']);
+    Route::post('projek/{projek_id}/transaksi', [ProTransaksiController::class, 'cipta_transaksi_projek']);    
     
     Route::get('tender', [TenderController::class, 'senarai_tender'])->name('tender.senarai');
     Route::get('tender/{id}', [TenderController::class, 'satu_tender']);    

@@ -81,6 +81,10 @@
                         <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#nota" role="tab">
                             Nota
                         </a>
+                        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#transaksi"
+                            role="tab">
+                            Transaksi
+                        </a>
                         <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#perubahan"
                             role="tab">
                             Perubahan
@@ -516,6 +520,91 @@
 
                     </div>
 
+                    <div class="tab-pane fade active" id="transaksi" role="tabpanel">
+
+                        <table class="table table-striped table-sm transaksi-datatable">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Modul</th>
+                                    <th>Nama</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+
+
+                            <div class="col-xl-12">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title">Output</h5>
+                                    </div>
+
+                                    <div class="card-body" id="html-transaksi-output">
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-xl-12">
+
+                                <div class="card">
+
+
+                                    <div class="card-body">
+
+                                        <form action="/projek/{{$projek->id}}/transaksi" method="POST">
+                                            @csrf
+
+                                            <div class="row">
+
+                                                <div class="mb-3 col-6">
+                                                    <label class="form-label">Nama</label>
+                                                    <input class="form-control" type="text" name="nama">
+                                                </div>
+
+                                                <div class="mb-3 col-6">
+                                                    <label class="form-label">Modul</label>
+                                                    <input class="form-control" type="text" name="modul">
+                                                </div>     
+                                                
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="textwrapper">
+                                                        <textarea id="markdown-input-transaksi" name="deskripsi"
+                                                            class="form-control mb-3" cols="2" rows="10" id="rules"
+                                                            onkeyup="scriptTransaksiRan()"
+                                                            style="width:100%;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-primary">Simpan</button>
+                                        </form>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
 
 
 
@@ -841,5 +930,44 @@ $(function() {
 });
 </script>
 
+
+<script type="text/javascript">
+function scriptTransaksiRan() {
+    var converter = new showdown.Converter(),
+        text = document.getElementById("markdown-input-transaksi").value,
+        html = converter.makeHtml(text);
+    document.getElementById('html-transaksi-output').innerHTML = html;
+}
+</script>
+
+
+<script type="text/javascript">
+$(function() {
+
+    var table = $('.transaksi-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "/projek/{{$projek->id}}/transaksi",
+        columns: [            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+
+            {
+                data: 'modul',
+                name: 'modul'
+            },
+            {
+                data: 'nama',
+                name: 'nama'
+            },
+            {
+                data: 'link',
+                name: 'link'
+            },
+        ]
+    });
+
+
+});
+</script>
 
 @endsection
