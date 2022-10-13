@@ -10,7 +10,6 @@ use Laravel\Scout\Searchable;
 class Rujukan extends Model
 {
     use HasFactory;
-    use Searchable;
 
     
 }
