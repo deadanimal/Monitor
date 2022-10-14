@@ -73,6 +73,12 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/status">
+                            <span class="align-middle">Status</span>
+                        </a>
+                    </li>                    
+
                     @endrole
 
                     @role('admin|business')

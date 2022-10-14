@@ -57,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
     // Admin Function
     Route::middleware(['role:admin|pmo|finance'])->group(function () {
 
+        Route::get('status', [PenggunaController::class, 'status']);
+
         Route::post('projek/{projek_id}/activity', [ActivityController::class, 'cipta_activity']);
         Route::put('projek/{projek_id}/activity/{id}', [ActivityController::class, 'ubah_activity']);     
 

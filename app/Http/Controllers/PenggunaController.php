@@ -158,13 +158,36 @@ class PenggunaController extends Controller
     }    
 
     public function show_admin_dashboard($user) {
-        $acts = Activity::all();
-        $delis = Deliverable::all();
-        $notis = Notifikasi::all();
+
+        $today = date("Y-m-d");
+        
+        $act_lambats = Activity::where([
+            ['status','=', 'CIPTA'],
+            ['tarikh_rancang', '<', $today]
+        ])->get();
+        $act_siaps = Activity::where('status', 'PELAKSANA - SIAP')->get();
+        $act_tidak_siaps = Activity::where('status', 'PELAKSANA - TIDAK SIAP')->get();
+        
 
         return view('dashboard.admin', compact([
-            'user','acts', 'delis', 'notis'
+            'user', 'act_lambats', 'act_siaps', 'act_tidak_siaps'
         ]));
+    }
+
+    public function status() {
+        $today = date("Y-m-d");
+        
+        $act_lambats = Activity::where([
+            ['status','=', 'CIPTA'],
+            ['tarikh_rancang', '<', $today]
+        ])->get();
+        $act_siaps = Activity::where('status', 'PELAKSANA - SIAP')->get();
+        $act_tidak_siaps = Activity::where('status', 'PELAKSANA - TIDAK SIAP')->get();
+        
+
+        return view('dashboard.status', compact([
+            'act_lambats', 'act_siaps', 'act_tidak_siaps'
+        ]));        
     }
 
     public function show_client_dashboard($user) {
@@ -180,7 +203,7 @@ class PenggunaController extends Controller
     public function show_staff_dashboard($user) {
 
 
-        $acts = Activity::where([
+        $acts = Activity::whereIn('status', ['CIPTA', 'b', 'c'])->orWhere([
             ['pekerja_id','=', $user->id]
         ])->get();
         $delis = Deliverable::where([

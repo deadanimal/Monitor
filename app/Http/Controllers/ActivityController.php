@@ -186,7 +186,55 @@ class ActivityController extends Controller
                 $noti->save();                
 
             }             
-        }    
+        }   
+        
+        if ($user_id == $act->pemeriksa_id) {
+            if($req->jenis == 'PE-OK') {
+                $act->deskripsi_pe_ok = $req->deskripsi;
+                $act->status = 'PEMERIKSA - LULUS';  
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> dilulus oleh pemeriksa '.$act->pemeriksa->nama.'.';
+                $noti->user_id = $act->pekerja_id;
+                $noti->save();
+
+            } else if($req->jenis == 'PE-KO') {
+                $act->deskripsi_pe_ko = $req->deskripsi;
+                $act->status = 'PEMERIKSA - GAGAL';
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> tidak lulus oleh pemeriksa '.$act->pemeriksa->nama.'.';
+                $noti->user_id = $act->pekerja_id;
+                $noti->save();                
+
+            }             
+        }   
+        
+        if ($user_id == $act->pengesah_id) {
+            if($req->jenis == 'PG-OK') {
+                $act->deskripsi_pg_ok = $req->deskripsi;
+                $act->status = 'PENGESAH - LULUS';  
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> dilulus oleh pengesah '.$act->pengesah->nama.'.';
+                $noti->user_id = $act->pekerja_id;
+                $noti->save();
+
+            } else if($req->jenis == 'PG-KO') {
+                $act->deskripsi_pg_ko = $req->deskripsi;
+                $act->status = 'PENGESAH - GAGAL';
+
+                $noti = New Notifikasi;
+                $url = '/projek/'.$projek_id.'/activity/'.$id;
+                $noti->message = '<a href="'.$url.'"> Aktiviti '.$id.'</a> tidak lulus oleh pengesah '.$act->pengesah->nama.'.';
+                $noti->user_id = $act->pekerja_id;
+                $noti->save();                
+
+            }             
+        }          
 
         if ($req->jenis == 'SAH' and $user_id == $act->supervisor_id) {
             $act->deskripsi_sah = $req->deskripsi;
