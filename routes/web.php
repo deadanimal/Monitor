@@ -17,6 +17,7 @@ use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\TenderController;
 use App\Http\Controllers\ProTransaksiController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\BeaconController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -139,6 +140,8 @@ Route::middleware(['auth'])->group(function () {
     # User Specific
     Route::get('pengguna/{id}/activity', [ActivityController::class, 'senarai_activity_pengguna']);
     Route::get('pengguna/{id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
+
+    Route::post('beacon', [BeaconController::class, 'receive_beacon']);
 
 });
 
