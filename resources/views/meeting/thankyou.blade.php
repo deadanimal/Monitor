@@ -110,7 +110,7 @@
 
 
         <footer class="mt-auto text-white-50">
-            <p>Monitor - Meeting for <a href="https://monitor.pipeline.com.my" class="text-white">Pipeline Network Sdn. Bhd.</a>
+            <p><a href="https://monitor.pipeline.com.my/meeting/attend" class="text-white">Monitor - Meeting</a> for <a href="https://pipeline.com.my" class="text-white">Pipeline Network Sdn. Bhd.</a>
             </p>
         </footer>
     </div>
