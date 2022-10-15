@@ -104,7 +104,7 @@
         </header>
         <main class="px-3">
             <h1>Thank You</h1>
-            <p class="lead">Your attendance has been recorded. You can close this page.</p>
+            <p class="lead">Your attendance has been recorded. You can close this page. This page will close automatically.</p>
           </main>
 
 
@@ -114,6 +114,15 @@
             </p>
         </footer>
     </div>
+
+    <script type="text/javascript">
+
+        setTimeout(function(){
+            close();
+        }, 5000);    
+
+
+    </script>
 
 
 
