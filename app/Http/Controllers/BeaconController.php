@@ -10,7 +10,7 @@ class BeaconController extends Controller
 {
     public function receive_beacon(Request $request)
     {
-        $user = $request->user;
+        $user = $request->user();
 
         if($user) {
             $beacon = New Beacon;
