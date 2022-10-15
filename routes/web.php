@@ -16,6 +16,7 @@ use App\Http\Controllers\RujukanController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\TenderController;
 use App\Http\Controllers\ProTransaksiController;
+use App\Http\Controllers\MeetingController;
 
 Route::middleware(['auth'])->group(function () {
    
@@ -140,6 +141,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pengguna/{id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
 
 });
+
+Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
+Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
 
 require __DIR__.'/auth.php';
 
