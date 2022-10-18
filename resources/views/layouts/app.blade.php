@@ -62,6 +62,12 @@
                                 <span class="align-middle">Rujukan</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/status">
+                                <span class="align-middle">Status</span>
+                            </a>
+                        </li>                        
                     @endif
 
                     @role('admin|pmo')
@@ -71,11 +77,6 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/status">
-                                <span class="align-middle">Status</span>
-                            </a>
-                        </li>
                     @endrole
 
                     @role('admin|business')
