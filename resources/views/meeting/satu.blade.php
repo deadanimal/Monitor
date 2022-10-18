@@ -45,6 +45,33 @@
 
                 <div class="col-xl-6">
 
+                    <div class="card flex-fill w-100">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Kemaskini Meeting</h5>
+                        </div>
+                        <div class="card-body py-3">
+
+                            <form action="/meeting/{{$meeting->id}}" method="POST">
+                                @method('PUT')
+                                @csrf
+                                <div class="mb-3">
+                                    <label class="form-label">Nama</label>
+                                    <input class="form-control" type="text" value="{{ $meeting->nama }}" name="nama">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tarikh</label>
+                                    <input class="form-control" type="date" value="{{ $meeting->tarikh }}" name="tarikh">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Deskripsi</label>
+                                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ $meeting->deskripsi }}</textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kemaskini</button>
+                            </form>
+
+                        </div>
+                    </div>                    
+
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">Senarai Attendance</h5>

@@ -16,6 +16,7 @@ class MeetingController extends Controller
 {
     public function senarai_meeting(Request $request) {
         $meetings = Meeting::all();
+        //Carbon::now()->subDays(30)
         return view('meeting.senarai', compact('meetings'));
     }
 
@@ -38,6 +39,19 @@ class MeetingController extends Controller
         $meeting->save();
         return back();
     }
+
+    public function kemaskini_meeting(Request $request) {
+        $id = (int)$request->route('id');
+        $user = $request->user();
+        $user_id = $user->id;
+        $meeting = Meeting::find($id);
+        $meeting->nama = $request->nama;
+        $meeting->tarikh = $request->tarikh;
+        $meeting->deskripsi = $request->deskripsi;
+        $meeting->user_id= $user_id;
+        $meeting->save();
+        return back();
+    }    
 
     public function tandaan_meeting(Request $request) {
         $user = $request->user();

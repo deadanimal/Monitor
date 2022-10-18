@@ -151,6 +151,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('meeting', [MeetingController::class, 'senarai_meeting']);
     Route::post('meeting', [MeetingController::class, 'cipta_meeting']);
     Route::get('meeting/{id}', [MeetingController::class, 'satu_meeting']);
+    Route::put('meeting/{id}', [MeetingController::class, 'kemaskini_meeting']);
     Route::post('meeting/{id}/nota', [MeetingController::class, 'nota_meeting']);
 
     Route::get('booking', [BookingController::class, 'senarai_booking']);
