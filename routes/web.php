@@ -19,6 +19,9 @@ use App\Http\Controllers\ProTransaksiController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\BeaconController;
 
+Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
+Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
+
 Route::middleware(['auth'])->group(function () {
    
     Route::get('', [PenggunaController::class, 'dashboard'])->name('dashboard');    
@@ -150,8 +153,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
-Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
 
 require __DIR__.'/auth.php';
 
