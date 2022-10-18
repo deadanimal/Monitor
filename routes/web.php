@@ -71,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('projek/{projek_id}/invoice/{id}', [InvoiceController::class, 'ubah_invoice']);    
         
         Route::get('jadual-staff/{id}', [PenggunaController::class, 'jadual_staff']);
-        Route::get('jadual-projek/{id}', [PenggunaController::class, 'jadual_projek']);
+        Route::get('jadual-projek/{id}', [PenggunaController::class, 'jadual_projek']);        
            
     });      
 
@@ -142,6 +142,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('pengguna/{id}/deliverable', [DeliverableController::class, 'senarai_deliverable_pengguna']);
 
     Route::post('beacon', [BeaconController::class, 'receive_beacon']);
+
+    Route::get('meeting', [MeetingController::class, 'senarai_meeting']);
+    Route::post('meeting', [MeetingController::class, 'cipta_meeting']);
+    Route::get('meeting/{id}', [MeetingController::class, 'satu_meeting']);
+    Route::post('meeting/{id}/nota', [MeetingController::class, 'nota_meeting']);
 
 });
 

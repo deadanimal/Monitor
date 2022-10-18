@@ -57,6 +57,14 @@
       </a>
      </li>	 -->
                     @if (auth()->user()->organisasi_id == 1 || auth()->user()->organisasi_id == 18)
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/meeting">
+                                <span class="align-middle">Meeting</span>
+                            </a>
+                        </li>
+
+
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/rujukan">
                                 <span class="align-middle">Rujukan</span>
@@ -67,7 +75,7 @@
                             <a class="sidebar-link" href="/status">
                                 <span class="align-middle">Status</span>
                             </a>
-                        </li>                        
+                        </li>
                     @endif
 
                     @role('admin|pmo')
@@ -76,7 +84,6 @@
                                 <span class="align-middle">Pengguna</span>
                             </a>
                         </li>
-
                     @endrole
 
                     @role('admin|business')
@@ -209,10 +216,10 @@
    @endif
    
    @isset($message)
-        <div class="alert alert-success">
-        <strong>{{ @message }}</strong>
-        </div>
-        @endif			 -->
+            <div class="alert alert-success">
+            <strong>{{ @message }}</strong>
+            </div>
+            @endif			 -->
 
 
                 @yield('content')
@@ -226,8 +233,8 @@
 
                                     <!-- @role('admin')
         <li class="list-inline-item">
-                                                        <a class="text-muted" href="/admin"></a>
-                                                    </li>
+                                                                <a class="text-muted" href="/admin"></a>
+                                                            </li>
     @endrole   -->
 
                                 </ul>
