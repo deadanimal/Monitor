@@ -56,13 +56,30 @@
        <span class="align-middle">Nota</span>
       </a>
      </li>	 -->
-                    @if (auth()->user()->organisasi_id == 1 || auth()->user()->organisasi_id == 18)
+                    @if (auth()->user()->organisasi_id == 1)
+
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/status">
+                                <span class="align-middle">Status</span>
+                            </a>
+                        </li>
 
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/meeting">
                                 <span class="align-middle">Meeting</span>
                             </a>
                         </li>
+                        
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="/booking-asset">
+                                <span class="align-middle">Booking</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (auth()->user()->organisasi_id == 1 || auth()->user()->organisasi_id == 18)
+
 
 
                         <li class="sidebar-item">
@@ -71,12 +88,8 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="/status">
-                                <span class="align-middle">Status</span>
-                            </a>
-                        </li>
-                    @endif
+      
+                    @endif                    
 
                     @role('admin|pmo')
                         <li class="sidebar-item">

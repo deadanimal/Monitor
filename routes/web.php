@@ -18,6 +18,8 @@ use App\Http\Controllers\TenderController;
 use App\Http\Controllers\ProTransaksiController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\BeaconController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\BookingAssetController;
 
 Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
 Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
@@ -150,6 +152,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('meeting', [MeetingController::class, 'cipta_meeting']);
     Route::get('meeting/{id}', [MeetingController::class, 'satu_meeting']);
     Route::post('meeting/{id}/nota', [MeetingController::class, 'nota_meeting']);
+
+    Route::get('booking', [BookingController::class, 'senarai_booking']);
+
+    Route::get('booking-asset', [BookingAssetController::class, 'senarai_booking_asset']); 
+    Route::post('booking-asset', [BookingAssetController::class, 'cipta_booking_asset']);     
+    Route::get('booking-asset/{id}', [BookingAssetController::class, 'satu_booking_asset']);
+    Route::get('booking-asset/{id}/book', [BookingAssetController::class, 'cipta_booking']);  
 
 });
 
