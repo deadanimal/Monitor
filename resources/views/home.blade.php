@@ -90,11 +90,11 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-8 col-lg-10">
                         <div class="header-content text-center">
-                            <h3 class="header-title">Handcrafted Landing Page for Startups and SaaS Businesses</h3>
-                            <p class="text">A simple, customizable, and, beautiful SaaS business focused landing page to make your project closer to launch!</p>
+                            <h3 class="header-title">Customised Application & System for Real Business</h3>
+                            <p class="text">A simple, customizable, and, beautiful applications to improve your business</p>
                             <ul class="header-btn">
-                                <li><a class="main-btn btn-one" href="#">GET IN TOUCH</a></li>
-                                <li><a class="main-btn btn-two video-popup" href="https://www.youtube.com/watch?v=r44RKWyfcFw">WATCH THE VIDEO <i class="lni-play"></i></a></li>
+                                <li><a class="main-btn btn-one" href="#contact">GET IN TOUCH</a></li>
+                                {{-- <li><a class="main-btn btn-two video-popup" href="https://www.youtube.com/watch?v=r44RKWyfcFw">WATCH THE VIDEO <i class="lni-play"></i></a></li> --}}
                             </ul>
                         </div> <!-- header content -->
                     </div>
@@ -116,7 +116,7 @@
                 <div class="col-lg-6">
                     <div class="section-title pb-10">
                         <h4 class="title">Crafted For</h4>
-                        <p class="text">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p>
+                        <p class="text">Stop wasting time and money designing and managing applications that are worthless. Efficiency and returns guaranteed!</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">Startup</h4>
-                                    <p class="text">Short description for the ones</br> who look for something new.</p>
+                                    <p class="text">We develop applications for your startup to be a unicorn</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
@@ -140,8 +140,8 @@
                                     <i class="lni-bar-chart"></i>
                                 </div>
                                 <div class="services-content media-body">
-                                    <h4 class="services-title">SaaS Business</h4>
-                                    <p class="text">Short description for the ones</br> who look for something new.</p>
+                                    <h4 class="services-title">Business</h4>
+                                    <p class="text">Our systems improve your business for you to make profit</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
@@ -152,7 +152,7 @@
                                 </div>
                                 <div class="services-content media-body">
                                     <h4 class="services-title">Agency</h4>
-                                    <p class="text">Short description for the ones</br> who look for something new.</p>
+                                    <p class="text">We help agencies to improve service to the people!</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
@@ -162,8 +162,8 @@
                                     <i class="lni-bulb"></i>
                                 </div>
                                 <div class="services-content media-body">
-                                    <h4 class="services-title">App Landing</h4>
-                                    <p class="text">Short description for the ones</br> who look for something new.</p>
+                                    <h4 class="services-title">Personal</h4>
+                                    <p class="text">We help important people i.e. you, to brand themselves!</p>
                                 </div>
                             </div> <!-- services content -->
                         </div>
@@ -310,7 +310,7 @@
                 <div class="col-lg-6">
                     <div class="section-title text-center pb-10">
                         <h4 class="title">Get In touch</h4>
-                        <p class="text">Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p>
+                        <p class="text">Stop wasting time and money designing and managing applications that are worthless. Efficiency and returns guaranteed!</p>
                     </div> <!-- section title -->
                 </div>
             </div> <!-- row -->

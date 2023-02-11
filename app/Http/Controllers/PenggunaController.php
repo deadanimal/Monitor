@@ -29,7 +29,7 @@ class PenggunaController extends Controller
     }
 
     public function send_message(Request $request) {
-        dd($request);
+        Mail::to('afeezaziz@gmail.com')->send(new ContactUs($request));
         return back();
     }    
 
