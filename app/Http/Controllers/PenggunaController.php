@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Mail\ContactUs;
+use Illuminate\Support\Facades\Mail;
+
+
 use DataTables;
 
 use App\Models\User;
@@ -19,6 +23,16 @@ use App\Models\Lokasi;
 
 class PenggunaController extends Controller
 {
+
+    public function home() {
+        return view('home');
+    }
+
+    public function send_message(Request $request) {
+        dd($request);
+        return back();
+    }    
+
     public function dashboard(Request $request)
     {
 

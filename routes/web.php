@@ -21,12 +21,16 @@ use App\Http\Controllers\BeaconController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingAssetController;
 
+
+Route::get('', [PenggunaController::class, 'home']);
+Route::post('', [PenggunaController::class, 'send_message']);
+
 Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
 Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
 
 Route::middleware(['auth'])->group(function () {
    
-    Route::get('', [PenggunaController::class, 'dashboard'])->name('dashboard');    
+    //Route::get('', [PenggunaController::class, 'dashboard'])->name('dashboard');    
     Route::get('profil', [PenggunaController::class, 'profil'])->name('profil');    
     Route::get('profil/log', [PenggunaController::class, 'log'])->name('log');   
     Route::post('profil/ubah-password', [PenggunaController::class, 'ubah_password']);
