@@ -13,21 +13,11 @@ class ContactUs extends Mailable
 
     public $contact;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct($contact)
     {
         $this->contact = $contact;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->view('emails.contactus');
