@@ -49,6 +49,22 @@ class PenggunaController extends Controller
         Mail::to('afeezaziz@gmail.com')->send(new GiveFeedback($feedback));
         Alert::success('Feedback Received!', 'Your feedback to us is highly appreciated. We will take note and revert soon.');
         return back();
-    }        
+    }    
+    
+    public function afeezaziz() {
+        return view('home');
+    }    
+
+    public function send_afeezaziz(Request $request) {
+        Alert::success('Message Received!', 'Afeez will contact you soon!');
+        Mail::to('afeezaziz@gmail.com')->send(new EmailAfeezaziz($request));
+        return back();
+    }       
+    
+    public function send_usecase(Request $request) {
+        Alert::success('Message Received!', 'Pipeline will contact you soon!');
+        Mail::to('connect@pipeline.com.my')->send(new EmailUsecase($request));
+        return back();
+    }            
 
 }
