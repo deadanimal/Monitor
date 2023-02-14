@@ -25,8 +25,8 @@ use App\Http\Controllers\BookingAssetController;
 Route::get('', [PenggunaController::class, 'home']);
 Route::post('', [PenggunaController::class, 'send_message']);
 
-Route::get('feedback', [PenggunaController::class, 'feedback']);
-Route::post('feedback', [PenggunaController::class, 'send_feedback']);
+Route::get('komen', [PenggunaController::class, 'feedback']);
+Route::post('komen', [PenggunaController::class, 'send_feedback']);
 
 Route::get('meeting/attend', [MeetingController::class, 'tandaan_meeting']);
 Route::post('meeting/attend', [MeetingController::class, 'menanda_meeting']);
