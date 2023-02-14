@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" type="text/css" href="/feedback/css/util.css">
     <link rel="stylesheet" type="text/css" href="/feedback/css/main.css">
+    @include('sweetalert::alert')
 
 </head>
 
