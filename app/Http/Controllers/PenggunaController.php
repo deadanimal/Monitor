@@ -47,6 +47,7 @@ class PenggunaController extends Controller
             'message' => $request->message,
         ]);
         Mail::to('afeezaziz@gmail.com')->send(new GiveFeedback($feedback));
+        Alert::success('Feedback Received!', 'Your feedback to us is highly appreciated. We will take note and revert soon.');
         return back();
     }        
 
