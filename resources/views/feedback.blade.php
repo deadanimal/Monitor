@@ -33,7 +33,7 @@
                     <img src="/feedback/images/img-01.png" alt="IMG">
                 @endif
             </div>
-            <form class="contact1-form validate-form" action="/feedback" method="POST">
+            <form class="contact1-form validate-form" action="/komen" method="POST">
                 @csrf
 
                 <input type="hidden" name="system" value="{{ $system }}">
